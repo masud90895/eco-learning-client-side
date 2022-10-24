@@ -1,90 +1,91 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Firebase/AuthProvider";
-import travel from "../assist/travel.png"
+import { Link } from "react-router-dom";
+// import { AuthContext } from "../Firebase/AuthProvider";
+
 
 const SingUp = () => {
   const [showpass, setShowPass] = useState(false);
-  const {
-    createUserEmailPassword,
-    updateName,
-    emailVarification,
-    loginWithGoogle,
-    loginWithGithub,
-  } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const {
+  //   createUserEmailPassword,
+  //   updateName,
+  //   emailVarification,
+  //   loginWithGoogle,
+  //   loginWithGithub,
+  // } = useContext(AuthContext);
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const name = form.name.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
 
-    if(email === '' || password === ''){
-      return toast.error('please input value')
-     }
+  //   if(email === '' || password === ''){
+  //     return toast.error('please input value')
+  //    }
 
-    createUserEmailPassword(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("Successfully created!");
-        updateUserName();
-        varifyEmail();
-        navigate("/");
-      })
-      .catch((err) => console.error(err));
+  //   createUserEmailPassword(email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //       toast.success("Successfully created!");
+  //       updateUserName();
+  //       varifyEmail();
+  //       navigate("/");
+  //     })
+  //     .catch((err) => console.error(err));
 
-    const updateUserName = () => {
-      updateName(name)
-        .then(() => {
-          // Profile updated!
-          // ...
-        })
-        .catch((error) => {
-          // An error occurred
-          console.log(error.massage);
-          // ...
-        });
-    };
+  //   const updateUserName = () => {
+  //     updateName(name)
+  //       .then(() => {
+  //         // Profile updated!
+  //         // ...
+  //       })
+  //       .catch((error) => {
+  //         // An error occurred
+  //         console.log(error.massage);
+  //         // ...
+  //       });
+  //   };
 
-    const varifyEmail = () => {
-      emailVarification().then({});
-    };
-  };
+  //   const varifyEmail = () => {
+  //     emailVarification().then({});
+  //   };
+  // };
 
-  const googleLogin = () => {
-    loginWithGoogle()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("Login Successfully!");
-        navigate("/");
-      })
-      .catch((err) => console.error(err.massage));
-  };
+  // const googleLogin = () => {
+  //   loginWithGoogle()
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //       toast.success("Login Successfully!");
+  //       navigate("/");
+  //     })
+  //     .catch((err) => console.error(err.massage));
+  // };
 
-  const githubLogin = () => {
-    loginWithGithub()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("Login Successfully!");
-        navigate("/");
-      })
-      .catch((err) => console.error(err.massage));
-  };
+  // const githubLogin = () => {
+  //   loginWithGithub()
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //       toast.success("Login Successfully!");
+  //       navigate("/");
+  //     })
+  //     .catch((err) => console.error(err.massage));
+  // };
 
   return (
     <>
       <div className="bg-indigo-50">
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
-          <div className=" md:hidden sm:mb-8 mb-6">
-            <img className="w-[256px]  mx-auto" src={travel} alt="" />
+          <div className=" md:hidden sm:mb-8 mb-6 ">
+          <img className="w-[56px] mx-auto" src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
+            <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
           </div>
-          <div className="bg-white mt-[50px] shadow-lg rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+          <div className="bg-white mt-[50px] border border-green-600 shadow-lg rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
             <p
               tabIndex={0}
               className=" text-2xl font-extrabold leading-6 text-gray-800"
@@ -98,14 +99,14 @@ const SingUp = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="hover:text-gray-500  hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
+                className="hover:text-green-900  hover:underline text-sm font-medium leading-none text-green-600 cursor-pointer"
               >
                 {" "}
                 login here
               </Link>
             </p>
             <button
-              onClick={googleLogin}
+              // onClick={googleLogin}
               aria-label="Continue with google"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100"
@@ -139,7 +140,7 @@ const SingUp = () => {
               </p>
             </button>
             <button
-              onClick={githubLogin}
+              // onClick={githubLogin}
               aria-label="Continue with github"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100"
@@ -168,22 +169,39 @@ const SingUp = () => {
               </p>
               <hr className="w-full bg-gray-400" />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form /* onSubmit={handleSubmit} */>
               <div>
                 <label
                   htmlFor="name"
                   className="text-sm font-medium leading-none text-gray-800"
                 >
                   {" "}
-                  name{" "}
+                  Full Name{" "}
                 </label>
                 <input
                   id="name"
                   aria-labelledby="name"
                   name="name"
                   type="name"
-                  className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2"
-                  placeholder="user name"
+                  className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
+                  placeholder="Full Name"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="photoURL"
+                  className="text-sm font-medium leading-none text-gray-800"
+                >
+                  {" "}
+                  PhotoURL{" "}
+                </label>
+                <input
+                  id="photoURL"
+                  aria-labelledby="photoURL"
+                  name="photoURL"
+                  type="photoURL"
+                  className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
+                  placeholder="photoURL"
                 />
               </div>
               <div>
@@ -199,8 +217,8 @@ const SingUp = () => {
                   aria-labelledby="email"
                   name="email"
                   type="email"
-                  className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2"
-                  placeholder="Your-email@gmail.com"
+                  className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
+                  placeholder="email@gmail.com"
                 />
               </div>
               <div className="mt-6 w-full">
@@ -217,7 +235,7 @@ const SingUp = () => {
                     type={showpass ? "text" : "password"}
                     placeholder="******"
                     name="password"
-                    className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+                    className="bg-gray-200 border-green-600 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                   />
                   <div
                     onClick={() => setShowPass(!showpass)}
@@ -261,20 +279,18 @@ const SingUp = () => {
               </div>
               <div className="mt-8">
                 <button
-        
                   role="button"
-                 
                   className="  text-sm font-semibold leading-none text-white  bg-[#F9A51A] hover:bg-white hover:border-2 hover:border-[#F9A51A] hover:text-[#F9A51A] border rounded  py-4 w-full"
                 >
                   Register
                 </button>
-                
               </div>
             </form>
           </div>
           <div className="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
-            <div className="pl-8 md:block hidden">
-              <img className="w-[256px]" src={travel} alt="" />
+            <div className="pl-8 md:block hidden lg:flex items-center">
+            <img className="w-[56px] " src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
+            <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
             </div>
             <div className="flex items-start mt-8">
               <div>
@@ -296,7 +312,12 @@ const SingUp = () => {
                 </svg>
               </div>
               <p className="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">
-              Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you; it should change you. It leaves marks on your memory, on your consciousness, on your heart, and on your body. You take something with you. Hopefully, you leave something good behind.
+                Travel isn’t always pretty. It isn’t always comfortable.
+                Sometimes it hurts, it even breaks your heart. But that’s okay.
+                The journey changes you; it should change you. It leaves marks
+                on your memory, on your consciousness, on your heart, and on
+                your body. You take something with you. Hopefully, you leave
+                something good behind.
               </p>
             </div>
             <div className="flex items-center pl-8 mt-10">
@@ -309,7 +330,7 @@ const SingUp = () => {
               </div>
               <div className="ml-2">
                 <p className="text-sm font-medium leading-none text-gray-800">
-                Anthony Bourdain
+                  Anthony Bourdain
                 </p>
                 <p className="text-sm font-medium leading-none text-gray-600 mt-1 cursor-pointer hover:underline">
                   See profile

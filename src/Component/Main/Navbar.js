@@ -11,6 +11,7 @@ const Navbar = () => {
       <div className="mx-auto max-w-screen-xl py-2 px-2  md:px-4 md:py-4">
         <div className="flex items-center sm:justify-between sm:gap-4">
           <div className="flex md:grid">
+            <Link to='/'>
             <div className="flex items-center">
               <h1 className="text-2xl font-bold">
                 <span className="text-green-600">ECO</span> LEARNING{" "}
@@ -22,7 +23,7 @@ const Navbar = () => {
                   alt=""
                 />
               </span>
-            </div>
+            </div></Link>
             {/* mobail view only  */}
             <div className="block md:hidden flex  justify-between">
               <button
@@ -50,6 +51,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="md:flex hidden  flex-1 items-center  gap-8 justify-end">
+            <Link to="home">Home</Link>
             <Link to="courses">Courses</Link>
             <Link to="faq">FAQ</Link>
             <Link to="blog">Blog</Link>
@@ -96,6 +98,7 @@ const Navbar = () => {
       {/* mobail device menu  */}
       {showMenu && (
         <div className="flex flex-col gap-2 text-center mr-7 text-xl">
+          <Link to="Home">Home</Link>
           <Link to="courses">Courses</Link>
           <Link to="faq">FAQ</Link>
           <Link to="blog">Blog</Link>
