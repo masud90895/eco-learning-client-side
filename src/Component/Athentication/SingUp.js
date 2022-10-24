@@ -1,81 +1,83 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../firebase/UserContext";
 // import { AuthContext } from "../Firebase/AuthProvider";
 
 
 const SingUp = () => {
   const [showpass, setShowPass] = useState(false);
-  // const {
-  //   createUserEmailPassword,
-  //   updateName,
-  //   emailVarification,
-  //   loginWithGoogle,
-  //   loginWithGithub,
-  // } = useContext(AuthContext);
-  // const navigate = useNavigate();
+  const {
+    createUserEmailPassword,
+    updateName,
+    emailVarification,
+    loginWithGoogle,
+    loginWithGithub,
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  //   if(email === '' || password === ''){
-  //     return toast.error('please input value')
-  //    }
+    if(email === '' || password === ''){
+      return toast.error('please input value')
+     }
 
-  //   createUserEmailPassword(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //       toast.success("Successfully created!");
-  //       updateUserName();
-  //       varifyEmail();
-  //       navigate("/");
-  //     })
-  //     .catch((err) => console.error(err));
+    createUserEmailPassword(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully created!");
+        updateUserName();
+        varifyEmail();
+        navigate("/");
+      })
+      .catch((err) => console.error(err));
 
-  //   const updateUserName = () => {
-  //     updateName(name)
-  //       .then(() => {
-  //         // Profile updated!
-  //         // ...
-  //       })
-  //       .catch((error) => {
-  //         // An error occurred
-  //         console.log(error.massage);
-  //         // ...
-  //       });
-  //   };
+    const updateUserName = () => {
+      updateName(name,photoURL)
+        .then(() => {
+          // Profile updated!
+          // ...
+        })
+        .catch((error) => {
+          // An error occurred
+          console.log(error.massage);
+          // ...
+        });
+    };
 
-  //   const varifyEmail = () => {
-  //     emailVarification().then({});
-  //   };
-  // };
+    const varifyEmail = () => {
+      emailVarification().then({});
+    };
+  };
 
-  // const googleLogin = () => {
-  //   loginWithGoogle()
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //       toast.success("Login Successfully!");
-  //       navigate("/");
-  //     })
-  //     .catch((err) => console.error(err.massage));
-  // };
+  const googleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+        navigate("/");
+      })
+      .catch((err) => console.error(err.massage));
+  };
 
-  // const githubLogin = () => {
-  //   loginWithGithub()
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //       toast.success("Login Successfully!");
-  //       navigate("/");
-  //     })
-  //     .catch((err) => console.error(err.massage));
-  // };
+  const githubLogin = () => {
+    loginWithGithub()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+        navigate("/");
+      })
+      .catch((err) => console.error(err.massage));
+  };
 
   return (
     <>
@@ -106,7 +108,7 @@ const SingUp = () => {
               </Link>
             </p>
             <button
-              // onClick={googleLogin}
+              onClick={googleLogin}
               aria-label="Continue with google"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100"
@@ -140,7 +142,7 @@ const SingUp = () => {
               </p>
             </button>
             <button
-              // onClick={githubLogin}
+              onClick={githubLogin}
               aria-label="Continue with github"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100"
@@ -169,7 +171,7 @@ const SingUp = () => {
               </p>
               <hr className="w-full bg-gray-400" />
             </div>
-            <form /* onSubmit={handleSubmit} */>
+            <form onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -185,6 +187,7 @@ const SingUp = () => {
                   type="name"
                   className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
                   placeholder="Full Name"
+                  required
                 />
               </div>
               <div>
@@ -218,7 +221,7 @@ const SingUp = () => {
                   name="email"
                   type="email"
                   className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
-                  placeholder="email@gmail.com"
+                  placeholder="email@gmail.com" required
                 />
               </div>
               <div className="mt-6 w-full">
@@ -236,7 +239,7 @@ const SingUp = () => {
                     placeholder="******"
                     name="password"
                     className="bg-gray-200 border-green-600 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-                  />
+                  required/>
                   <div
                     onClick={() => setShowPass(!showpass)}
                     className="absolute right-0 mt-2 mr-3 cursor-pointer"

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { AuthContext } from "../../firebase/UserContext";
 
 const Navbar = () => {
   const [enabled, setEnabled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const {user} = useContext(AuthContext)
+  console.log(user);
   return (
     <header aria-label="Page Header" className="bg-gray-50">
       <div className="mx-auto max-w-screen-xl py-2 px-2  md:px-4 md:py-4">
@@ -69,7 +72,31 @@ const Navbar = () => {
               />
             </Switch>
 
-            <button
+            {
+              user || user?.uid ? <button
+              title={user?.displayName}
+              type="button"
+              className="group flex shrink-0 items-center rounded-lg transition"
+            >
+              <span className="sr-only">Menu</span>
+              {
+                user?.photoURL ? <img
+                alt="Man"
+                src={user?.photoURL}
+                className="h-10 w-10 rounded-full object-cover"
+              /> : <img
+              alt="Man"
+              src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
+              className="h-10 w-10 rounded-full object-cover"
+            />
+              }
+
+              <p className="ml-2 hidden text-left text-xs sm:block ">
+                <strong className="block font-medium">{user?.displayName}</strong>
+
+                <span className="text-gray-500"> {user?.email} </span>
+              </p>
+            </button> : <button
               type="button"
               className="group flex shrink-0 items-center rounded-lg transition"
             >
@@ -79,13 +106,8 @@ const Navbar = () => {
                 src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                 className="h-10 w-10 rounded-full object-cover"
               />
-
-              <p className="ml-2 hidden text-left text-xs sm:block">
-                <strong className="block font-medium">Eric Frusciante</strong>
-
-                <span className="text-gray-500"> eric@frusciante.com </span>
-              </p>
             </button>
+            }
             <Link to="login">
               <button className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
                 login
