@@ -47,7 +47,7 @@ const SingUp = () => {
         })
         .catch((error) => {
           // An error occurred
-          console.log(error.massage);
+          console.log(error.message);
           // ...
         });
     };
@@ -65,7 +65,7 @@ const SingUp = () => {
         toast.success("Login Successfully!");
         navigate("/");
       })
-      .catch((err) => console.error(err.massage));
+      .catch((err) => console.error(err.message));
   };
 
   const githubLogin = () => {
@@ -76,7 +76,7 @@ const SingUp = () => {
         toast.success("Login Successfully!");
         navigate("/");
       })
-      .catch((err) => console.error(err.massage));
+      .catch((err) => console.error(err.message));
   };
 
   return (

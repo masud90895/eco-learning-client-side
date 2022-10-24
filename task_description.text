@@ -10,43 +10,24 @@ You have to create a website to provide a quality learning platform in the domai
 
 !=>11.Your checkout page will be a dynamic route with route parameters having the id of the content that the user had clicked. On the checkout page, you will display the name based on the id.
 
-=>12.Use the Environment variable to hide the firebase key.
 
-=>13.If you reload the protected/private route (after login), this page will not redirect the user to the login page. Instead, it will keep the logged-in user on the protected route.
+!=>13.If you reload the protected/private route (after login), this page will not redirect the user to the login page. Instead, it will keep the logged-in user on the protected route.
 
 Bonus:
 =>1.Minimum 12 meaningful git commits on the client-side repository and minimum of 5 meaningful commits on the server-side repository.
 
 =>2.Make your website mobile & desktop responsive (tablet responsive is optional).
 
-=>3.Display errors when the user's email address or password doesn't match.
-
-=>4.Clicking "Blog" will redirect to a public route. That route will have 4 questions & answers.
-
-4.1 what is cors?
-
-4.2 Why are you using firebase? What other options do you have to implement authentication?
-
-4.3 How does the private route work?
-
-4.4 What is Node? How does Node work?
 
 =>5.(client-side repo) Meaningful readme.md file containing your website name and link to your live site. And at least five bullet points mentioning your website's different features and functionality. And a list of technologies (frameworks, libraries) used in your project. (added a meaningful readme.md file for the server-side repo is optional)
 
-=>6.Create a 404 page.
 
-=>7.Make sure your site looks reasonable. The design and color selection is meaningful.
-
-=>8.Clean and organized Code (folder structure). Organize components with meaningful names, and add comments when needed.
 
 Optional (But Highly Recommended):
-Add a link for Password reset (use toast/ alert), (Don't worry if the email goes to the spam folder.)
 
-Add "active route" to indicate the route which you are visiting.
+!=>1.Use react-hook-form package to make forms on your website
 
-Use react-hook-form package to make forms on your website
-
-Explore & use these react packages in your website : react-icons, react-image-magnify, react-awesome-slider, react-loader etc.
+!=>2.Explore & use these react packages in your website : react-icons, react-image-magnify, react-awesome-slider, react-loader etc.
 
 Feel free to add some relevant FAQ in your FAQ route
 

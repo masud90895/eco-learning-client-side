@@ -7,6 +7,7 @@ import Home from "../Component/Home/Home";
 import CoursesOutLet from "../Component/Courses/CoursesOutLet";
 import ErrorPage from "../Component/Main/ErrorPage";
 import Main from "../Component/Main/Main";
+import Blog from "../Component/Blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <SingUp />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
       },
       {
         path: "courses",

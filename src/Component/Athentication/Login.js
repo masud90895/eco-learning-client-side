@@ -1,84 +1,111 @@
 import React, { useContext, useState } from "react";
-import { Link,useLocation,useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../firebase/UserContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const Login = () => {
   const [showpass, setShowPass] = useState(false);
-  const {loginWithPass,loginWithGoogle,loginWithGithub} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false);
+  const [modalValue, setModalValue] = useState("");
+  const { loginWithPass, loginWithGoogle, loginWithGithub, forgetPassword } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  const handleLoginWithPass=(e)=>{
-    e.preventDefault()
-   const form = e.target
-   const email = form.email.value
-   const password = form.password.value
-   console.log(email,password);
+  const handleLoginWithPass = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
 
-   if(email === '' || password === ''){
-    return toast.error('please input value')
-   }
+    if (email === "" || password === "") {
+      return toast.error("please input value");
+    }
 
-   loginWithPass(email,password)
-   .then(result=>{
-     const user= result.user;
-     console.log(user);
-     toast.success('Successfully login!')
-     navigate(from, { replace: true });
-   })
-   .catch(err=>{
-    const error =err.massage
-    console.error(error)
-    sweetAlert(error)
-  })
-  }
+    loginWithPass(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully login!");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        const error = err.message;
+        console.error(error);
+        sweetAlert(error);
+      });
+  };
 
-
-  const googleLogin=()=>{
+  const googleLogin = () => {
     loginWithGoogle()
-    .then(result=>{
-      const user= result.user;
-      console.log(user);
-      toast.success('Login Successfully!')
-      navigate(from, { replace: true });
-    })
-    .catch(err=>{
-      const error =err.massage
-      console.error(error)
-      sweetAlert(error)
-    })
-  }
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        const error = err.message;
+        console.error(error);
+        sweetAlert(error);
+      });
+  };
 
-  
-  const githubLogin=()=>{
+  const githubLogin = () => {
     loginWithGithub()
-    .then(result=>{
-      const user= result.user;
-      console.log(user);
-      toast.success('Login Successfully!')
-      navigate(from, { replace: true });
-    })
-    .catch(err=>{
-      const error =err.massage
-      console.error(error)
-      sweetAlert(error)
-    })
-  }
-  const sweetAlert=(error)=>{
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        const error = err.message;
+        console.error(error);
+        sweetAlert(error);
+      });
+  };
+  const sweetAlert = (error) => {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
+      icon: "error",
+      title: "Oops...",
       text: `${error}`,
-    })
-  }
-  return (<>
+    });
+  };
+  //reset password
+  const handleResetPassword = () => {
+    forgetPassword(modalValue)
+      .then(() => {
+        // Password reset email sent!
+        Swal.fire({
+          icon: "success",
+          title: "Reset Successfull...",
+          text: "Chack Your Mail",
+        });
+        // navigate(from, { replace: true });
+        setShowModal(false);
+
+        // ..
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
+      });
+  };
+  return (
+    <>
       <div className="bg-indigo-50">
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
           <div className=" md:hidden sm:mb-8 mb-6">
-          <img className="w-[56px]  mx-auto" src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
-          <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
+            <img
+              className="w-[56px]  mx-auto"
+              src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+              alt=""
+            />
+            <h1 className="text-2xl font-bold">
+              <span className="text-green-600">Eco</span> Learning
+            </h1>
           </div>
           <div className="bg-white md:mt-[50px] shadow-lg border border-green-600 rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
             <p
@@ -101,7 +128,7 @@ const Login = () => {
               </Link>
             </p>
             <button
-            onClick={googleLogin}
+              onClick={googleLogin}
               aria-label="Continue with google"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100"
@@ -135,7 +162,7 @@ const Login = () => {
               </p>
             </button>
             <button
-            onClick={githubLogin}
+              onClick={githubLogin}
               aria-label="Continue with github"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100"
@@ -177,8 +204,7 @@ const Login = () => {
                   id="email"
                   aria-labelledby="email"
                   type="email"
-                  name= 'email'
-                  
+                  name="email"
                   className="bg-gray-200 rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 border border-green-600"
                   placeholder="email@gmail.com "
                   required
@@ -195,11 +221,12 @@ const Login = () => {
                 <div className="relative flex items-center justify-center">
                   <input
                     id="myInput"
-                    name= 'password'
+                    name="password"
                     placeholder="******"
                     type={showpass ? "text" : "password"}
                     className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2 border-green-600"
-                  required/>
+                    required
+                  />
                   <div
                     onClick={() => setShowPass(!showpass)}
                     className="absolute right-0 mt-2 mr-3 cursor-pointer"
@@ -239,6 +266,14 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
+                <div className="space-y-1">
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="text-xs hover:underline text-gray-900"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
               </div>
               <div className="mt-8">
                 <button
@@ -252,8 +287,14 @@ const Login = () => {
           </div>
           <div className="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
             <div className="pl-8 md:block hidden lg:flex items-center">
-            <img className="w-[56px] " src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
-            <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
+              <img
+                className="w-[56px] "
+                src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+                alt=""
+              />
+              <h1 className="text-2xl font-bold">
+                <span className="text-green-600">Eco</span> Learning
+              </h1>
             </div>
             <div className="flex items-start mt-8">
               <div>
@@ -275,7 +316,9 @@ const Login = () => {
                 </svg>
               </div>
               <p className="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">
-              Broad, wholesome, charitable views of men and things cannot be acquired by vegetating in one little corner of the earth all of one’s lifetime.
+                Broad, wholesome, charitable views of men and things cannot be
+                acquired by vegetating in one little corner of the earth all of
+                one’s lifetime.
               </p>
             </div>
             <div className="flex items-center pl-8 mt-10">
@@ -288,7 +331,7 @@ const Login = () => {
               </div>
               <div className="ml-2">
                 <p className="text-sm font-medium leading-none text-gray-800">
-                Mark Twain
+                  Mark Twain
                 </p>
                 <p className="text-sm font-medium leading-none text-gray-600 mt-1 cursor-pointer hover:underline">
                   See profile
@@ -297,6 +340,82 @@ const Login = () => {
             </div>
           </div>
         </div>
+        {showModal ? (
+          <>
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+              <div className="py-8">
+                <div
+                  role="alert"
+                  className="container mx-auto w-11/12 md:w-[90%] lg:w-[90%] flex justify-center"
+                >
+                  <div className="relative w-11/12 sm:w-8/12 md:w-9/12 bg-white dark:bg-gray-800 shadow  pt-10 pb-8 rounded">
+                    <div className="flex flex-col items-center px-4 md:px-12">
+                      <img src="https://i.ibb.co/QDMrqK5/Saly-10.png" />
+                      <p className="text-base sm:text-lg md:text-2xl font-bold md:leading-6 mt-6 text-gray-800 text-center dark:text-gray-100">
+                        Don’t Forget Your Password
+                      </p>
+                      <p className="text-xs sm:text-sm leading-5 mt-2 sm:mt-4 text-center text-gray-600 dark:text-gray-300">
+                        You can change your password for security reasons or
+                        reset it if you forget it.
+                      </p>
+                      <div className="flex items-center mt-4 sm:mt-6 w-full">
+                        <div className="bg-gray-50 border rounded border-gray-200 dark:border-gray-700 dark:bg-gray-700 w-full">
+                          <input
+                            onChange={(e) => setModalValue(e.target.value)}
+                            className="w-full focus:outline-none pl-4 py-3 text-sm leading-none text-gray-600 dark:text-gray-100 bg-transparent placeholder-gray-600 dark:placeholder-gray-100"
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                          />
+                        </div>
+                        <button
+                          onClick={handleResetPassword}
+                          className="px-3 py-3 bg-indigo-700 dark:bg-indigo-600 focus:outline-none hover:bg-opacity-80 ml-2 rounded"
+                        >
+                          <svg
+                            width={20}
+                            height={20}
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1.62163 7.76261C1.18663 7.61761 1.18247 7.38345 1.62997 7.23428L17.5358 1.93261C17.9766 1.78595 18.2291 2.03262 18.1058 2.46428L13.5608 18.3693C13.4358 18.8101 13.1816 18.8251 12.995 18.4068L9.99997 11.6668L15 5.00011L8.3333 10.0001L1.62163 7.76261Z"
+                              fill="white"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => setShowModal(false)}
+                      className="cursor-pointer absolute top-0 right-0 m-3 text-gray-800 dark:text-gray-100 transition duration-150 ease-in-out"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Close"
+                        className="icon icon-tabler icon-tabler-x"
+                        width={20}
+                        height={20}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                        stroke="currentColor"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1={18} y1={6} x2={6} y2={18} />
+                        <line x1={6} y1={6} x2={18} y2={18} />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          </>
+        ) : null}
       </div>
     </>
   );

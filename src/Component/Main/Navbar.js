@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { AuthContext } from "../../firebase/UserContext";
@@ -82,10 +82,10 @@ const Navbar = () => {
             </div>
           </div>
           <div className="md:flex hidden  flex-1 items-center  gap-8 justify-end">
-            <Link to="home">Home</Link>
-            <Link to="courses">Courses</Link>
-            <Link to="faq">FAQ</Link>
-            <Link to="blog">Blog</Link>
+            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" } to="home">Home</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="courses">Courses</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="faq">FAQ</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="blog">Blog</NavLink>
             <Switch
               checked={enabled}
               onChange={setEnabled}
