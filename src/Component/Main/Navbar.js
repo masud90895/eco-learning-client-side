@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { AuthContext } from "../../firebase/UserContext";
@@ -7,8 +7,23 @@ import { AuthContext } from "../../firebase/UserContext";
 const Navbar = () => {
   const [enabled, setEnabled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const {user} = useContext(AuthContext)
-  console.log(user);
+  const location = useLocation();
+  const [toggle, setToggle] =useState(false)
+  const { user, userLogOut } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {
+        // Sign-out successful.
+        navigate("login");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error(error.massage);
+      });
+  };
   return (
     <header aria-label="Page Header" className="bg-gray-50">
       <div className="mx-auto max-w-screen-xl py-2 px-2  md:px-4 md:py-4">
@@ -33,17 +48,30 @@ const Navbar = () => {
                 type="button"
                 className="group ml-1 flex shrink-0 items-center rounded-lg transition"
               >
-                <img
+                {
+                  user?.photoURL? <img
                   alt="Man"
-                  src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                   className="h-10 w-10 rounded-full object-cover"
-                />
+                  src={user?.photoURL}
+                /> : <img
+                alt="Man"
+                src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+                }
               </button>
+              {
+              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              logOut
+            </button>
+            : 
+              
               <Link to="login">
-                <button className="bg-green-600 mx-1 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white  hover:text-black">
-                  login
-                </button>
+              <button className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+                login
+              </button>
               </Link>
+            }
               <button onClick={() => setShowMenu(!showMenu)}>
                 <img
                   className="w-10"
@@ -103,16 +131,23 @@ const Navbar = () => {
               <span className="sr-only">Menu</span>
               <img
                 alt="Man"
-                src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
                 className="h-10 w-10 rounded-full object-cover"
               />
             </button>
             }
-            <Link to="login">
+            {
+              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              logOut
+            </button>
+            : 
+              
+              <Link to="login">
               <button className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
                 login
               </button>
-            </Link>
+              </Link>
+            }
           </div>
         </div>
       </div>

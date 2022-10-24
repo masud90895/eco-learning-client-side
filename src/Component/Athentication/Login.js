@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
-// import { AuthContext } from "../Firebase/AuthProvider";
+import { AuthContext } from "../../firebase/UserContext";
+import Swal from 'sweetalert2'
 const Login = () => {
   const [showpass, setShowPass] = useState(false);
- /*  const {loginWithPass,loginWithGoogle,loginWithGithub} = useContext(AuthContext)
+  const {loginWithPass,loginWithGoogle,loginWithGithub} = useContext(AuthContext)
   const navigate = useNavigate()
   let location = useLocation();
-  let from = location.state?.from?.pathname || "/"; */
+  let from = location.state?.from?.pathname || "/";
 
-  /* const handleLoginWithPass=(e)=>{
+  const handleLoginWithPass=(e)=>{
     e.preventDefault()
    const form = e.target
    const email = form.email.value
@@ -18,20 +19,24 @@ const Login = () => {
 
    if(email === '' || password === ''){
     return toast.error('please input value')
-   } */
+   }
 
-  /*  loginWithPass(email,password)
+   loginWithPass(email,password)
    .then(result=>{
      const user= result.user;
      console.log(user);
      toast.success('Successfully login!')
      navigate(from, { replace: true });
    })
-   .catch(err=>console.error(err))
-  } */
+   .catch(err=>{
+    const error =err.massage
+    console.error(error)
+    sweetAlert(error)
+  })
+  }
 
 
-  /* const googleLogin=()=>{
+  const googleLogin=()=>{
     loginWithGoogle()
     .then(result=>{
       const user= result.user;
@@ -39,11 +44,15 @@ const Login = () => {
       toast.success('Login Successfully!')
       navigate(from, { replace: true });
     })
-    .catch(err=>console.error(err.massage))
-  } */
+    .catch(err=>{
+      const error =err.massage
+      console.error(error)
+      sweetAlert(error)
+    })
+  }
 
   
- /*  const githubLogin=()=>{
+  const githubLogin=()=>{
     loginWithGithub()
     .then(result=>{
       const user= result.user;
@@ -51,8 +60,19 @@ const Login = () => {
       toast.success('Login Successfully!')
       navigate(from, { replace: true });
     })
-    .catch(err=>console.error(err.massage))
-  } */
+    .catch(err=>{
+      const error =err.massage
+      console.error(error)
+      sweetAlert(error)
+    })
+  }
+  const sweetAlert=(error)=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${error}`,
+    })
+  }
   return (<>
       <div className="bg-indigo-50">
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
@@ -81,7 +101,7 @@ const Login = () => {
               </Link>
             </p>
             <button
-            // onClick={googleLogin}
+            onClick={googleLogin}
               aria-label="Continue with google"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100"
@@ -115,7 +135,7 @@ const Login = () => {
               </p>
             </button>
             <button
-            // onClick={githubLogin}
+            onClick={githubLogin}
               aria-label="Continue with github"
               role="button"
               className=" p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100"
@@ -144,7 +164,7 @@ const Login = () => {
               </p>
               <hr className="w-full bg-gray-400" />
             </div>
-            <form /* onSubmit={handleLoginWithPass} */ action="">
+            <form onSubmit={handleLoginWithPass} action="">
               <div>
                 <label
                   htmlFor="email"
@@ -158,8 +178,10 @@ const Login = () => {
                   aria-labelledby="email"
                   type="email"
                   name= 'email'
+                  
                   className="bg-gray-200 rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 border border-green-600"
-                  placeholder="Your-email@gmail.com "
+                  placeholder="email@gmail.com "
+                  required
                 />
               </div>
               <div className="mt-6 w-full">
@@ -177,7 +199,7 @@ const Login = () => {
                     placeholder="******"
                     type={showpass ? "text" : "password"}
                     className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2 border-green-600"
-                  />
+                  required/>
                   <div
                     onClick={() => setShowPass(!showpass)}
                     className="absolute right-0 mt-2 mr-3 cursor-pointer"
