@@ -26,11 +26,11 @@ const Navbar = () => {
   };
   return (
     <header aria-label="Page Header" className="bg-gray-600">
-      <div className="mx-auto max-w-screen-xl py-2 px-2  md:px-4 md:py-4">
+      <div className="mx-auto  py-2 px-2  md:px-10 md:py-4">
         <div className="flex items-center sm:justify-between sm:gap-4">
-          <div className="flex md:grid">
+          <div className="flex   lg:grid ">
             <Link to='/'>
-            <div className="flex items-center">
+            <div className="flex md:w-[214px] lg:w-full items-center">
               <h1 className="text-2xl font-bold">
                 <span className="text-green-600">ECO</span> LEARNING{" "}
               </h1>
@@ -43,7 +43,7 @@ const Navbar = () => {
               </span>
             </div></Link>
             {/* mobail view only  */}
-            <div className="block md:hidden flex  justify-between">
+            <div className="block lg:hidden flex ml-0 md:ml-[350px]  justify-between">
               <button
                 type="button"
                 className="group ml-1 flex shrink-0 items-center rounded-lg transition"
@@ -57,13 +57,13 @@ const Navbar = () => {
                 }
               </button>
               {
-              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-1 rounded-lg hover:border-2 md:mx-5 lg:mx-0 hover:border-green-600 hover:bg-white hover:text-black">
               logOut
             </button>
             : 
               
               <Link to="login">
-              <button className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              <button className="bg-green-600 text-white p-1 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
                 login
               </button>
               </Link>
@@ -77,11 +77,11 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className="md:flex hidden  flex-1 items-center  gap-8 justify-end">
-            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" } to="home">Home</NavLink>
-            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="courses">Courses</NavLink>
-            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="faq">FAQ</NavLink>
-            <NavLink className={({isActive})=> isActive? "border-b-2 border-green-600" : "" }  to="blog">Blog</NavLink>
+          <div className="lg:flex hidden  flex-1 items-center  gap-8 justify-end">
+            <NavLink className={({isActive})=> isActive? "border-b-2 text-green-600 border-green-600" : "" } to="home">Home</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 text-green-600  border-green-600" : "" }  to="courses">Courses</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 text-green-600  border-green-600" : "" }  to="faq">FAQ</NavLink>
+            <NavLink className={({isActive})=> isActive? "border-b-2 text-green-600  border-green-600" : "" }  to="blog">Blog</NavLink>
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -142,7 +142,7 @@ const Navbar = () => {
 
       {/* mobail device menu  */}
       {showMenu && (
-        <div className="flex flex-col gap-2 text-center mr-7 text-xl">
+        <div className="flex  lg:hidden flex-col gap-2 text-center mr-7 text-xl">
           <Link to="Home">Home</Link>
           <Link to="courses">Courses</Link>
           <Link to="faq">FAQ</Link>

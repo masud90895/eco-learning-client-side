@@ -10,6 +10,7 @@ import CoursesSideBar from "../Component/Courses//CoursesSideBar";
 import CourseDetaile from "../Component/Courses//CourseDetaile";
 import CourseChackOut from "../Component/Courses/CourseChackOut";
 import PriveteRoutes from "./PriveteRoutes";
+import FAQ from "../Component/FAQ/FAQ";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About3 />,
+      },
+      {
+        path: "faq",
+        element: <FAQ/>,
       },
       {
         path: "courses",

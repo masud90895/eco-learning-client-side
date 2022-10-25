@@ -3,13 +3,16 @@ import Course from "./Course";
 
 const CoursesContainer = ({ courses }) => {
   return (
-    <div className=" 2xl:container 2xl:mx-auto">
-      <div className=" bg-gray-50 text-center lg:py-10 md:py-8 py-6">
+    <div className=" 2xl:container 2xl:mx-auto  relative bg-[url(https://i.ibb.co/FKjjPFW/20544.jpg)] bg-cover bg-center bg-no-repeat">
+      <div
+    className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/25"
+  ></div>
+      <div className=" relative bg-gray-50  text-center lg:py-10 md:py-8 py-6">
         <p className=" w-10/12 mx-auto md:w-full  font-semibold lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-center text-gray-800">
           Discover Our Popular Courses
         </p>
       </div>
-      <div className=" py-6 lg:px-20 md:px-6 px-4">
+      <div className=" relative py-6 lg:px-20 md:px-6 px-4">
         <p className=" font-normal text-sm leading-3 text-gray-600 ">
           Home / Courses by Category / Course
         </p>

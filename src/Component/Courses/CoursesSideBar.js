@@ -8,8 +8,8 @@ const CoursesSideBar = () => {
   const courses = useLoaderData();
  
   return (
-    <div className="md:flex">
-      <div className="h-screen w-full p-3 space-y-2 md:w-80 lg:w-60   bg-gray-900   text-gray-100">
+    <div className="lg:flex  ">
+      <div className="lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-gray-900   text-gray-100">
         <div className="flex items-center p-2 space-x-4">
           <img
             src={user?.photoURL}

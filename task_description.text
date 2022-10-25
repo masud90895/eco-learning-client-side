@@ -1,10 +1,6 @@
-
-!=>10.There will be a button at the bottom of the content detail called "Get premium access." Clicking the button will take the user to the Checkout route. This route will be a private/protected route. Please ensure that the private route redirects to the login page if the user is not logged in. After login, the user will be redirected to the checkout page.
-
+=>1.Display errors when the user's email address or password doesn't match.
 !=>11.Your checkout page will be a dynamic route with route parameters having the id of the content that the user had clicked. On the checkout page, you will display the name based on the id.
 
-
-!=>13.If you reload the protected/private route (after login), this page will not redirect the user to the login page. Instead, it will keep the logged-in user on the protected route.
 
 Bonus:
 =>1.Minimum 12 meaningful git commits on the client-side repository and minimum of 5 meaningful commits on the server-side repository.
@@ -23,27 +19,9 @@ Optional (But Highly Recommended):
 If you have sometime, try to implement dark/light theme toggle.
 
 
-When a user clicks on their profile image, it will redirect to the user details page. This page will show the user's detailed information (name, email & profile picture). The logged-in user can update their profile(image, displayName) by clicking on a button. (Alternatively, The profile edit form could be in a modal)
+When a user clicks on their profile image, it will redirect to the user details page.This page will show the user's detailed information (name, email & profile picture). The logged-in user can update their profile(image, displayName) by clicking on a button. (Alternatively, The profile edit form could be in a modal)
 
 Add something extra of your own. This will help you in the future to differentiate your project from others.
 
 If you want to take a challenge. Consider using react-leaflet anywhere in your application
 
-Additional information:
-You can use a local image or host image anywhere or both.
-You are free to use any CSS library (bootstrap, tailwind) you want. if you want, you can use both bootstrap and react-bootstrap. Also, if you want, you can use any tailwind component library such as DaisyUI, etc.
-Try to host your site on Firebase (Netlify hosting will need some extra configurations)
-Host your server-side application on Vercel.
-If you have any issues with hosting or Github push, please join the "Github and deploy" related support session.
-What to submit:
-Your client-side code github repository
-Your server-side code github repository
-Your live website link
-Some Guidelines:
-Do not waste much time on the website idea. Just spend 15-20 minutes deciding, find a sample website, and start working on it.
-Do not waste much time finding the right image. You can always start with a simple idea. Make the website and then add different images.
-Don't look at the overall task list. Just take one task at a time and do it. Once it's done, pick the next task. If you get stuck on a particular task, move on to the next task.
-Stay calm, think before coding, and work sequentially. You will make it.
-Be strategic about electricity issue.
-No Pain, No gain:
-Have Patience! Work Hard! YOu will surprise yourself, and eventually, you will be proud of yourself.
