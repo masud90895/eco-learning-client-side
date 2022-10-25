@@ -8,6 +8,8 @@ import Blog from "../Component/Blog/Blog";
 import About3 from "../Component/About/About";
 import CoursesSideBar from "../Component/Courses//CoursesSideBar";
 import CourseDetaile from "../Component/Courses//CourseDetaile";
+import CourseChackOut from "../Component/Courses/CourseChackOut";
+import PriveteRoutes from "./PriveteRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -42,14 +44,24 @@ export const router = createBrowserRouter([
       {
         path: "courses",
         element: <CoursesSideBar />,
-        loader: ()=> fetch ("http://localhost:5000/"),
+        loader: () => fetch("http://localhost:5000/"),
       },
       {
         path: "courses/:id",
-        element: <CourseDetaile/>,
-        loader: ({params})=> fetch (`http://localhost:5000/courses/${params.id}`),
+        element: <CourseDetaile />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
       },
-      
+      {
+        path: "chackout/:id",
+        element: (
+          <PriveteRoutes>
+            <CourseChackOut />
+          </PriveteRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
+      },
     ],
   },
 ]);

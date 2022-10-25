@@ -13,7 +13,7 @@ const Course = ({ course }) => {
         <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
           <NavLink to={`${course.id}`}>
             <button className=" font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full">
-              Buy Course
+              View Details
             </button>
           </NavLink>
         </div>
@@ -35,7 +35,7 @@ const Course = ({ course }) => {
       </p>
       <NavLink to={`${course.id}`}>
         <button className=" border-green-600 font-medium  text-base leading-4 border-2  py-3 w-[40%] rounded hover:bg-green-600  mb-2 mt-2 text-black">
-          Buy Course
+          View Details
         </button>
       </NavLink>
     </div>

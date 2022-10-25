@@ -50,7 +50,7 @@ const Navbar = () => {
               >
                 {
                   user?.photoURL && <img
-                  alt="Man"
+                  alt=""
                   className="h-10 w-10 rounded-full object-cover"
                   src={user?.photoURL}
                 /> 
@@ -105,7 +105,7 @@ const Navbar = () => {
               <span className="sr-only">Menu</span>
               {
                 user?.photoURL && <img
-                alt="Man"
+                alt=""
                 src={user?.photoURL}
                 className="h-10 w-10 rounded-full object-cover"
               /> 
@@ -125,13 +125,13 @@ const Navbar = () => {
             </button>
             }
             {
-              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              user?.uid ? <button onClick={handleLogOut} className="bg-green-600 text-white p-2 rounded-lg  hover:border-green-600 hover:bg-white hover:text-black">
               logOut
             </button>
             : 
               
               <Link to="login">
-              <button className="bg-green-600 text-white p-2 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+              <button className="bg-green-600 text-white p-2 rounded-lg  hover:border-green-600 hover:bg-white hover:text-black">
                 login
               </button>
               </Link>
