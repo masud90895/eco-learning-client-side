@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { BiSelectMultiple } from 'react-icons/bi';
 
 const CourseDetaile = () => {
     const courseData = useLoaderData()
     const [rotate, setRotate] = useState(false);
     const {id,project, category,image,ditailes,fee,Duration,Feature,Rating,level,} = courseData;
-    console.log(courseData);
     return (
         <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
+            <div className='text-6xl mb-12 font-bold shadow'>
+                Welcome <span className='text-green-600'>Eco</span> Learning
+                <button className=''><img src="https://i.ibb.co/47nnPZb/icons8-download-96.png" alt="" /></button>
+            </div>
             <div className="flex flex-col-reverse items-center   gap-8">
                 {/* <!-- Description Div --> */}
 
@@ -53,6 +57,17 @@ const CourseDetaile = () => {
 
                     <p className=" font-normal text-base leading-6 text-gray-600 mt-7">{ditailes}</p>
                     <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">${fee}/-</p>
+                    <div>
+                        <h1 className='mt-5 text-2xl font-bold'>This Course Feather :</h1>
+                    {
+                        Feature.map(fr=> <ul key={fr} className="space-y-2 mb-2 text-xl  text-black">
+						<li className="flex mt-4 items-start space-x-2">
+							<BiSelectMultiple/>
+							<span>{fr}</span>
+						</li>
+					</ul>)
+                    }
+                    </div>
 
 
                     <button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">Buy Course</button>
@@ -65,11 +80,6 @@ const CourseDetaile = () => {
                         <img src={image} alt="Wooden Chair Previw" />
                     </div>
                 </div>
-            </div>
-            <div>
-                {
-                    Feature?.map(fe => <li>{fe}</li>)
-                }
             </div>
         </div>
     );
