@@ -76,7 +76,7 @@ const CourseDetaile = () => {
             ))}
           </div>
 
-          <Link to={`../chackout/${id}`}><button onClick={()=>toast.success('Thanks For Purcess!')} className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">
+          <Link to={`../chackout/${id}`}><button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">
             Get premium access
           </button>
           </Link>
