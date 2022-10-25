@@ -1,27 +1,10 @@
-=>1.Display errors when the user's email address or password doesn't match.
+=>7
 !=>11.Your checkout page will be a dynamic route with route parameters having the id of the content that the user had clicked. On the checkout page, you will display the name based on the id.
 
-
-Bonus:
-=>1.Minimum 12 meaningful git commits on the client-side repository and minimum of 5 meaningful commits on the server-side repository.
-
-
-=>5.(client-side repo) Meaningful readme.md file containing your website name and link to your live site. And at least five bullet points mentioning your website's different features and functionality. And a list of technologies (frameworks, libraries) used in your project. (added a meaningful readme.md file for the server-side repo is optional)
-
 Optional (But Highly Recommended):
-
-!=>1.Use react-hook-form package to make forms on your website
-
-!=>2.Explore & use these react packages in your website : react-icons, react-image-magnify, react-awesome-slider, react-loader etc.
-
-!=>3.Feel free to add some relevant FAQ in your FAQ route
-
 If you have sometime, try to implement dark/light theme toggle.
 
 
-When a user clicks on their profile image, it will redirect to the user details page.This page will show the user's detailed information (name, email & profile picture). The logged-in user can update their profile(image, displayName) by clicking on a button. (Alternatively, The profile edit form could be in a modal)
-
 Add something extra of your own. This will help you in the future to differentiate your project from others.
 
-If you want to take a challenge. Consider using react-leaflet anywhere in your application
 
