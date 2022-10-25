@@ -44,18 +44,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "faq",
-        element: <FAQ/>,
+        element: <FAQ />,
       },
       {
         path: "courses",
         element: <CoursesSideBar />,
-        loader: () => fetch("http://localhost:5000/"),
+        loader: () => fetch("https://eco-learning.vercel.app/"),
       },
       {
         path: "courses/:id",
         element: <CourseDetaile />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://eco-learning.vercel.app/courses/${params.id}`),
       },
       {
         path: "chackout/:id",
@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
           </PriveteRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://eco-learning.vercel.app/courses/${params.id}`),
       },
     ],
   },

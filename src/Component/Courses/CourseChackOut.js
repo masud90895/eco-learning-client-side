@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/UserContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import AnimatedText from "react-animated-text-content";
+import TextAnimation from "react-text-animations";
 const CourseChackOut = () => {
   const chackoutData = useLoaderData();
   const { user } = useContext(AuthContext);
@@ -9,51 +11,95 @@ const CourseChackOut = () => {
   const [dropdown2, setDropdown2] = useState(false);
   const [dropdown3, setDropdown3] = useState(false);
   const [changeText1, setChangeText1] = useState("City");
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
   const HandleText1 = (e) => {
     setChangeText1(e);
     setDropdown1(false);
   };
 
-  const handlechackOut=(e)=>{
+  const handlechackOut = (e) => {
     e.preventDefault();
     Swal.fire({
-        title: "Are you sure",
-        text: "You want to enroll This Course?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, I want!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Enroll Success!',
-            'Welcome Our Team.',
-            'success'
-            )
-            e.target.reset()
-            navigate('/')
-        }
-      })
-    
-  }
+      title: "Are you sure",
+      text: "You want to enroll This Course?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I want!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Enroll Success!", "Welcome Our Team.", "success");
+        e.target.reset();
+        navigate("/");
+      }
+    });
+  };
   return (
     <div className="overflow-y-hidden bg-gray-100">
-        <div className="mt-5">
-            <h1 className="text-xl">Your Choices Course:</h1>
-            <h1 title="Your Choices Courses" className="text-2xl font-bold">{chackoutData.project}</h1>
-        </div>
+      <div className="mt-5">
+        <h1 className="text-xl">Your Choices Course:</h1>
+        <h1 title="Your Choices Courses" className="text-2xl font-bold">
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              x: "200px",
+              y: "-20px",
+              scale: 1.1,
+              ease: "ease-in-out",
+            }}
+            animationType="float"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+            className="animated-paragraph"
+            includeWhiteSpaces
+            threshold={0.1}
+            rootMargin="20%"
+          >
+            {chackoutData.project}
+          </AnimatedText>
+        </h1>
+      </div>
       <div className="flex justify-center items-center 2xl:container 2xl:mx-auto lg:py-16 md:py-12 py-9 px-4 md:px-6 lg:px-20 xl:px-44 ">
         <div className="flex w-full sm:w-9/12 lg:w-full flex-col lg:flex-row justify-center items-center lg:space-x-10 2xl:space-x-36 space-y-12 lg:space-y-0">
-          <form onSubmit={handlechackOut} className="flex w-full  flex-col justify-start items-start">
+          <form
+            onSubmit={handlechackOut}
+            className="flex w-full  flex-col justify-start items-start"
+          >
             <div>
-              <p className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
-                Welcome
-              </p>
+              <div className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
+                
+                <TextAnimation.Slide
+                  target="Dear"
+                  text={["Dear", "sweeting", "beloved"]}
+                >
+                Welcome Dear
+                </TextAnimation.Slide>
+              </div>
             </div>
-              <p className="text-xl py-3">{user?.displayName}</p>
+            <h1 className="text-xl py-3">
+              <AnimatedText
+                type="chars" // animate words or chars
+                animation={{
+                  x: "200px",
+                  y: "-20px",
+                  scale: 1.1,
+                  ease: "ease-in-out",
+                }}
+                animationType="bounce"
+                interval={0.06}
+                duration={0.8}
+                tag="p"
+                className="animated-paragraph"
+                includeWhiteSpaces
+                threshold={0.1}
+                rootMargin="20%"
+              >
+                {user?.displayName}
+              </AnimatedText>
+            </h1>
             <div className="mt-12">
               <p className="text-xl font-semibold leading-5 text-gray-800">
                 Shipping Details
@@ -270,7 +316,10 @@ const CourseChackOut = () => {
                 placeholder="Phone Number"
               />
             </div>
-            <button type="submit" className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800">
+            <button
+              type="submit"
+              className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800"
+            >
               Proceed to payment
             </button>
             <div className="mt-4 flex justify-start items-center w-full">
@@ -301,7 +350,7 @@ const CourseChackOut = () => {
                   ${chackoutData?.fee}
                 </p>
               </div>
-             
+
               <div className="flex justify-between w-full items-center">
                 <p className="text-lg leading-4 text-gray-600">Sub total </p>
                 <p className="text-lg font-semibold leading-4 text-gray-600">

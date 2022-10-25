@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { BiSelectMultiple } from "react-icons/bi";
-import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
-import toast from "react-hot-toast";
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar } from "react-icons/ai";
+import AnimatedText from "react-animated-text-content";
 const ref = React.createRef();
 const CourseDetaile = () => {
   const courseData = useLoaderData();
@@ -22,16 +21,33 @@ const CourseDetaile = () => {
   } = courseData;
   return (
     <div className="2xl:container   2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  bg-gray-100">
-      
       <div className=" text-6xl flex mb-12 font-bold shadow">
         <h2 className="font-semibold w-full mx-auto lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
-          {project}
+          <AnimatedText
+            type="chars" // animate words or chars
+            animation={{
+              x: "200px",
+              y: "-20px",
+              scale: 1.1,
+              ease: "ease-in-out",
+            }}
+            animationType="diagonal"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+            className="animated-paragraph"
+            includeWhiteSpaces
+            threshold={0.1}
+            rootMargin="20%"
+          >
+            {project}
+          </AnimatedText>
         </h2>
         <Pdf targetRef={ref} filename="code-example.pdf">
           {({ toPdf }) => (
             <button onClick={toPdf}>
               <img
-              title="Download Feature "
+                title="Download Feature "
                 src="https://i.ibb.co/47nnPZb/icons8-download-96.png"
                 alt=""
               />
@@ -50,11 +66,11 @@ const CourseDetaile = () => {
 
           <div className=" flex flex-row justify-between  mt-5">
             <div className=" flex flex-row space-x-3">
-              <AiFillStar className="text-2xl text-orange-500"/>
+              <AiFillStar className="text-2xl text-orange-500" />
               <h1 className="text-xl font-bold">{Rating}</h1>
             </div>
             <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 cursor-pointer">
-             Duration: {Duration}
+              Duration: {Duration}
             </p>
           </div>
 
@@ -76,9 +92,10 @@ const CourseDetaile = () => {
             ))}
           </div>
 
-          <Link to={`../chackout/${id}`}><button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">
-            Get premium access
-          </button>
+          <Link to={`../chackout/${id}`}>
+            <button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">
+              Get premium access
+            </button>
           </Link>
         </div>
 

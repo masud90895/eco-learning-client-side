@@ -9,14 +9,14 @@ const Course = ({ course }) => {
       </div>
       <div className=" relative group">
         <div className=" flex justify-center items-center opacity-0 bg-gradient-to-t from-gray-800 via-gray-800 to-opacity-30 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
-        <img className=" w-full rounded-lg" src={course?.image} alt="" />
-       {/*  <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
+        <img className=" w-full h-[250px] rounded-lg" src={course?.image} alt="" />
+        <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
           <NavLink to={`${course.id}`}>
             <button className=" font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full">
               View Details
             </button>
           </NavLink>
-        </div> */}
+        </div>
       </div>
       <p className="  text-left p-2 text-xl font-bold leading-5 text-black md:mt-2 mt-4">
         {course?.project}
