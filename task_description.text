@@ -1,7 +1,3 @@
-Task Description:
-You have to create a website to provide a quality learning platform in the domains of Computer Science/ Information Technology/Programming Languages/ Web technology/ anything else (anything related to education). For example, JavaScript tutorial. Please note that you will select one of the options mentioned above/ any one topic regarding education. You can't make a website with a JavaScript tutorial, as we have given an example on it.
-
-
 !=>8.When you click an option (course card or an option on the left/right sidebar), It will take you to the course detail page. Content details depend on you. But, it must include a header, introductory description/course body, and one image. All details must be relevant to the topic. You may include a bullet list/ table/ chart if needed.
 
 !=>9.The course/content detail section will have a heading at the top of the page. The heading will have an icon/ button on the side of the heading. When you click on that button, it will create a pdf and will be downloaded ( This will give you more fun. Try out this after completing all of your tasks. Hint: Explore react-to-pdf package). Your pdf should contain some relevant information about the course details.
@@ -16,12 +12,8 @@ You have to create a website to provide a quality learning platform in the domai
 Bonus:
 =>1.Minimum 12 meaningful git commits on the client-side repository and minimum of 5 meaningful commits on the server-side repository.
 
-=>2.Make your website mobile & desktop responsive (tablet responsive is optional).
-
 
 =>5.(client-side repo) Meaningful readme.md file containing your website name and link to your live site. And at least five bullet points mentioning your website's different features and functionality. And a list of technologies (frameworks, libraries) used in your project. (added a meaningful readme.md file for the server-side repo is optional)
-
-
 
 Optional (But Highly Recommended):
 
@@ -29,11 +21,10 @@ Optional (But Highly Recommended):
 
 !=>2.Explore & use these react packages in your website : react-icons, react-image-magnify, react-awesome-slider, react-loader etc.
 
-Feel free to add some relevant FAQ in your FAQ route
+!=>3.Feel free to add some relevant FAQ in your FAQ route
 
 If you have sometime, try to implement dark/light theme toggle.
 
-Optional but highly recommended: A detailed, realistic, complex & stylish footer.
 
 When a user clicks on their profile image, it will redirect to the user details page. This page will show the user's detailed information (name, email & profile picture). The logged-in user can update their profile(image, displayName) by clicking on a button. (Alternatively, The profile edit form could be in a modal)
 

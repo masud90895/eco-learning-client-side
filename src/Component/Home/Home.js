@@ -22,7 +22,7 @@ const Home = () => {
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
             <Link
               rel="noopener noreferrer"
-              to='#'
+              to='about'
               className="px-8 py-3 text-lg font-semibold border rounded  border-green-600 hover:bg-green-600 "
             >
               Learn more

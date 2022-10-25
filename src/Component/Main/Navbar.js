@@ -25,7 +25,7 @@ const Navbar = () => {
       });
   };
   return (
-    <header aria-label="Page Header" className="bg-gray-50">
+    <header aria-label="Page Header" className="bg-gray-600">
       <div className="mx-auto max-w-screen-xl py-2 px-2  md:px-4 md:py-4">
         <div className="flex items-center sm:justify-between sm:gap-4">
           <div className="flex md:grid">
@@ -49,15 +49,11 @@ const Navbar = () => {
                 className="group ml-1 flex shrink-0 items-center rounded-lg transition"
               >
                 {
-                  user?.photoURL? <img
+                  user?.photoURL && <img
                   alt="Man"
                   className="h-10 w-10 rounded-full object-cover"
                   src={user?.photoURL}
-                /> : <img
-                alt="Man"
-                src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
-                className="h-10 w-10 rounded-full object-cover"
-              />
+                /> 
                 }
               </button>
               {
@@ -89,14 +85,14 @@ const Navbar = () => {
             <Switch
               checked={enabled}
               onChange={setEnabled}
-              className={`${enabled ? "bg-black" : "bg-gray-600"}
+              className={`${enabled ? "bg-black" : "bg-white"}
           relative inline-flex h-[28px] w-[64px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span className="sr-only">Use setting</span>
               <span
                 aria-hidden="true"
                 className={`${enabled ? "translate-x-9" : "translate-x-0"}
-            pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-green-600 shadow-lg ring-0 transition duration-200 ease-in-out`}
               />
             </Switch>
 
@@ -108,32 +104,24 @@ const Navbar = () => {
             >
               <span className="sr-only">Menu</span>
               {
-                user?.photoURL ? <img
+                user?.photoURL && <img
                 alt="Man"
                 src={user?.photoURL}
                 className="h-10 w-10 rounded-full object-cover"
-              /> : <img
-              alt="Man"
-              src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
-              className="h-10 w-10 rounded-full object-cover"
-            />
+              /> 
               }
 
               <p className="ml-2 hidden text-left text-xs sm:block ">
                 <strong className="block font-medium">{user?.displayName}</strong>
 
-                <span className="text-gray-500"> {user?.email} </span>
+                <span className="text-black"> {user?.email} </span>
               </p>
             </button> : <button
               type="button"
               className="group flex shrink-0 items-center rounded-lg transition"
             >
               <span className="sr-only">Menu</span>
-              <img
-                alt="Man"
-                src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
-                className="h-10 w-10 rounded-full object-cover"
-              />
+              
             </button>
             }
             {
@@ -162,14 +150,14 @@ const Navbar = () => {
           <Switch
             checked={enabled}
             onChange={setEnabled}
-            className={`${enabled ? "bg-black" : "bg-gray-600"}
+            className={`${enabled ? "bg-black" : "bg-white"}
           relative inline-flex h-[28px] w-[64px] mx-auto  shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <span className="sr-only">Use setting</span>
             <span
               aria-hidden="true"
               className={`${enabled ? "translate-x-9" : "translate-x-0"}
-            pointer-events-none inline-block h-[24px]  w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            pointer-events-none inline-block h-[24px]  w-[24px] transform rounded-full bg-green-600 shadow-lg ring-0 transition duration-200 ease-in-out`}
             />
           </Switch>
         </div>

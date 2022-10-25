@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../Component/Athentication/Login";
 import SingUp from "../Component/Athentication/SingUp";
-import Courses from "../Component/Courses/Courses";
-import CoursesSiteContain from "../Component/Courses/CoursesSiteContain";
 import Home from "../Component/Home/Home";
-import CoursesOutLet from "../Component/Courses/CoursesOutLet";
 import ErrorPage from "../Component/Main/ErrorPage";
 import Main from "../Component/Main/Main";
 import Blog from "../Component/Blog/Blog";
+import About3 from "../Component/About/About";
+import CoursesSideBar from "../Component/Courses//CoursesSideBar";
+import CourseDetaile from "../Component/Courses//CourseDetaile";
 
 export const router = createBrowserRouter([
   {
@@ -36,16 +36,20 @@ export const router = createBrowserRouter([
         element: <Blog />,
       },
       {
-        path: "courses",
-        element: <CoursesOutLet />,
-        loader: () => fetch("http://localhost:5000"),
-        children: [
-          {
-            path: "courses",
-            element: <CoursesSiteContain/>
-          },
-        ],
+        path: "about",
+        element: <About3 />,
       },
+      {
+        path: "courses",
+        element: <CoursesSideBar />,
+        loader: ()=> fetch ("http://localhost:5000/"),
+      },
+      {
+        path: "courses/:id",
+        element: <CourseDetaile/>,
+        loader: ({params})=> fetch (`http://localhost:5000/courses/${params.id}`),
+      },
+      
     ],
   },
 ]);
