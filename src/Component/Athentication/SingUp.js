@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/UserContext";
 // import { AuthContext } from "../Firebase/AuthProvider";
 
-
 const SingUp = () => {
   const [showpass, setShowPass] = useState(false);
   const {
@@ -13,6 +12,8 @@ const SingUp = () => {
     emailVarification,
     loginWithGoogle,
     loginWithGithub,
+    setLoading,
+    enabled
   } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,9 +25,9 @@ const SingUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    if(email === '' || password === ''){
-      return toast.error('please input value')
-     }
+    if (email === "" || password === "") {
+      return toast.error("please input value");
+    }
 
     createUserEmailPassword(email, password)
       .then((result) => {
@@ -37,10 +38,13 @@ const SingUp = () => {
         varifyEmail();
         navigate("/");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setLoading(false);
+      });
 
     const updateUserName = () => {
-      updateName(name,photoURL)
+      updateName(name, photoURL)
         .then(() => {
           // Profile updated!
           // ...
@@ -49,6 +53,9 @@ const SingUp = () => {
           // An error occurred
           console.log(error.message);
           // ...
+        })
+        .finally(() => {
+          setLoading(false);
         });
     };
 
@@ -65,7 +72,10 @@ const SingUp = () => {
         toast.success("Login Successfully!");
         navigate("/");
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => console.error(err.message))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const githubLogin = () => {
@@ -76,16 +86,25 @@ const SingUp = () => {
         toast.success("Login Successfully!");
         navigate("/");
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => console.error(err.message))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <>
-      <div className="bg-indigo-50">
+      <div className={enabled ? " bg-black " : "bg-indigo-50"}>
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
           <div className=" md:hidden sm:mb-8 mb-6 ">
-          <img className="w-[56px] mx-auto" src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
-            <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
+            <img
+              className="w-[56px] mx-auto"
+              src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+              alt=""
+            />
+            <h1 className="text-2xl font-bold">
+              <span className="text-green-600">Eco</span> <span className={enabled ? " text-white " : ""}>Learning</span>
+            </h1>
           </div>
           <div className="bg-white mt-[50px] border border-green-600 shadow-lg rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
             <p
@@ -221,7 +240,8 @@ const SingUp = () => {
                   name="email"
                   type="email"
                   className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 border-green-600 py-3 w-full pl-3 mt-2"
-                  placeholder="email@gmail.com" required
+                  placeholder="email@gmail.com"
+                  required
                 />
               </div>
               <div className="mt-6 w-full">
@@ -239,7 +259,8 @@ const SingUp = () => {
                     placeholder="******"
                     name="password"
                     className="bg-gray-200 border-green-600 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-                  required/>
+                    required
+                  />
                   <div
                     onClick={() => setShowPass(!showpass)}
                     className="absolute right-0 mt-2 mr-3 cursor-pointer"
@@ -283,7 +304,7 @@ const SingUp = () => {
               <div className="mt-8">
                 <button
                   role="button"
-                  className="  text-sm font-semibold leading-none text-white  bg-[#F9A51A] hover:bg-white hover:border-2 hover:border-[#F9A51A] hover:text-[#F9A51A] border rounded  py-4 w-full"
+                  className="  text-sm font-semibold leading-none text-white bg-green-600 hover:bg-white hover:border-2 hover:border-green-600 hover:text-green-600 border rounded  py-4 w-full"
                 >
                   Register
                 </button>
@@ -292,8 +313,14 @@ const SingUp = () => {
           </div>
           <div className="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
             <div className="pl-8 md:block hidden lg:flex items-center">
-            <img className="w-[56px] " src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
-            <h1 className="text-2xl font-bold"><span className="text-green-600">Eco</span> Learning</h1>
+              <img
+                className="w-[56px] "
+                src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+                alt=""
+              />
+              <h1 className="text-2xl font-bold">
+                <span className="text-green-600">Eco</span> <span className={enabled ? " text-white " : ""}>Learning</span>
+              </h1>
             </div>
             <div className="flex items-start mt-8">
               <div>
@@ -314,7 +341,7 @@ const SingUp = () => {
                   />
                 </svg>
               </div>
-              <p className="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">
+              <p className={`sm:text-2xl text-xl leading-7 ${enabled ? " text-white " : "text-gray-600"} pl-2.5`}>
                 Travel isn’t always pretty. It isn’t always comfortable.
                 Sometimes it hurts, it even breaks your heart. But that’s okay.
                 The journey changes you; it should change you. It leaves marks
@@ -331,11 +358,11 @@ const SingUp = () => {
                   className="w-full h-full"
                 />
               </div>
-              <div className="ml-2">
-                <p className="text-sm font-medium leading-none text-gray-800">
+              <div className={enabled ? " text-white ml-2" : "text-gray-800 ml-2"}>
+                <p className="text-sm font-medium leading-none ">
                   Anthony Bourdain
                 </p>
-                <p className="text-sm font-medium leading-none text-gray-600 mt-1 cursor-pointer hover:underline">
+                <p className="text-sm font-medium leading-none  mt-1 cursor-pointer hover:underline">
                   See profile
                 </p>
               </div>

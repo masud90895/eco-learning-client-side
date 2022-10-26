@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { Popover } from "@headlessui/react";
 import { AuthContext } from "../../firebase/UserContext";
 import logo from "../../assist/ty.png";
 
 const Navbar = () => {
-  const [enabled, setEnabled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const location = useLocation();
-  const [toggle, setToggle] = useState(false);
-  const { user, userLogOut } = useContext(AuthContext);
+
+  const { user, userLogOut, setEnabled, enabled } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -27,7 +24,14 @@ const Navbar = () => {
       });
   };
   return (
-    <header aria-label="Page Header" className="font-serif bg-gray-600">
+    <header
+      aria-label="Page Header"
+      className={
+        enabled
+          ? "font-serif border border-white bg-black"
+          : "font-serif bg-gray-600"
+      }
+    >
       <div className="mx-auto  py-2 px-2  md:px-10 md:py-4">
         <div className="flex items-center sm:justify-between sm:gap-4">
           <div className="flex   lg:grid ">
@@ -51,12 +55,22 @@ const Navbar = () => {
                 type="button"
                 className="group ml-1 flex shrink-0 items-center rounded-lg transition"
               >
-                {user?.photoURL && (
-                  <img
-                    alt=""
-                    className="h-10 w-10 rounded-full object-cover"
-                    src={user?.photoURL}
-                  />
+                {user?.photoURL ? (
+                  <Link to="profile">
+                    <img
+                      alt=""
+                      className="h-10 w-10 rounded-full object-cover"
+                      src={user?.photoURL}
+                    />
+                  </Link>
+                ) : (
+                  <Link to="profile">
+                    <img
+                      alt=""
+                      className="h-10 w-10 rounded-full object-cover"
+                      src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
+                    />
+                  </Link>
                 )}
               </button>
               {user?.uid ? (
@@ -81,7 +95,9 @@ const Navbar = () => {
           <div className="lg:flex hidden text-white flex-1 items-center  gap-8 justify-end">
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2  border-green-600" : ""
+                isActive
+                  ? "border-b-2   border-green-600"
+                  : "hover:text-green-400"
               }
               to="home"
             >
@@ -89,7 +105,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2   border-green-600" : ""
+                isActive
+                  ? "border-b-2   border-green-600"
+                  : "hover:text-green-400"
               }
               to="courses"
             >
@@ -97,7 +115,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2  border-green-600" : ""
+                isActive
+                  ? "border-b-2  border-green-600"
+                  : "hover:text-green-400"
               }
               to="faq"
             >
@@ -105,7 +125,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2   border-green-600" : ""
+                isActive
+                  ? "border-b-2   border-green-600"
+                  : "hover:text-green-400"
               }
               to="blog"
             >
@@ -114,7 +136,7 @@ const Navbar = () => {
             <Switch
               checked={enabled}
               onChange={setEnabled}
-              className={`${enabled ? "bg-black" : "bg-white"}
+              className={`${enabled ? "bg-gray-400" : "bg-white"}
           relative inline-flex h-[28px] w-[64px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span className="sr-only">Use setting</span>
@@ -141,13 +163,30 @@ const Navbar = () => {
                     />
                   </Link>
                 )}
+                {user?.photoURL ? (
+                  <Link to="profile">
+                    <img
+                      alt=""
+                      className="h-10 w-10 rounded-full object-cover"
+                      src={user?.photoURL}
+                    />
+                  </Link>
+                ) : (
+                  <Link to="profile">
+                    <img
+                      alt=""
+                      className="h-10 w-10 rounded-full object-cover"
+                      src="https://i.ibb.co/4frmjYF/240-F-287771298-jiu7ut-EUPIhd42en-PJeu-Wi-UR07-DGWx-M5-Cropped.png"
+                    />
+                  </Link>
+                )}
 
                 <p className="ml-2 hidden text-left text-xs sm:block ">
                   <strong className="block font-medium">
                     {user?.displayName}
                   </strong>
 
-                  <span className="text-black"> {user?.email} </span>
+                  <span className="text-white"> {user?.email} </span>
                 </p>
               </button>
             ) : (
@@ -186,7 +225,7 @@ const Navbar = () => {
           <Switch
             checked={enabled}
             onChange={setEnabled}
-            className={`${enabled ? "bg-black" : "bg-white"}
+            className={`${enabled ? "bg-gray-400" : "bg-white"}
           relative inline-flex h-[28px] w-[64px] mx-auto  shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75 mb-5 `}
           >
             <span className="sr-only">Use setting</span>

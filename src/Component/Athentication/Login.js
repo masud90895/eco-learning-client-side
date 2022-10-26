@@ -7,8 +7,14 @@ const Login = () => {
   const [showpass, setShowPass] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalValue, setModalValue] = useState("");
-  const { loginWithPass, loginWithGoogle, loginWithGithub, forgetPassword } =
-    useContext(AuthContext);
+  const {
+    loginWithPass,
+    loginWithGoogle,
+    loginWithGithub,
+    forgetPassword,
+    setLoading,
+    enabled
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -35,6 +41,9 @@ const Login = () => {
         const error = err.message;
         console.error(error);
         sweetAlert(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -50,6 +59,9 @@ const Login = () => {
         const error = err.message;
         console.error(error);
         sweetAlert(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -65,6 +77,9 @@ const Login = () => {
         const error = err.message;
         console.error(error);
         sweetAlert(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   const sweetAlert = (error) => {
@@ -91,11 +106,14 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error.message, { autoClose: 500 });
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   return (
     <>
-      <div className="bg-indigo-50">
+      <div className={enabled ? " bg-black " : "bg-indigo-50"}>
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
           <div className=" md:hidden sm:mb-8 mb-6">
             <img
@@ -104,7 +122,7 @@ const Login = () => {
               alt=""
             />
             <h1 className="text-2xl font-bold">
-              <span className="text-green-600">Eco</span> Learning
+              <span className="text-green-600">Eco</span> <span className={enabled ? " text-white " : ""}>Learning</span>
             </h1>
           </div>
           <div className="bg-white md:mt-[50px] shadow-lg border border-green-600 rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
@@ -293,7 +311,7 @@ const Login = () => {
                 alt=""
               />
               <h1 className="text-2xl font-bold">
-                <span className="text-green-600">Eco</span> Learning
+                <span className="text-green-600">Eco</span> <span className={enabled ? " text-white " : ""}>Learning</span> 
               </h1>
             </div>
             <div className="flex items-start mt-8">
@@ -315,7 +333,7 @@ const Login = () => {
                   />
                 </svg>
               </div>
-              <p className="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">
+              <p className={`sm:text-2xl text-xl leading-7 ${enabled ? " text-white " : "text-gray-600"} pl-2.5`}>
                 Broad, wholesome, charitable views of men and things cannot be
                 acquired by vegetating in one little corner of the earth all of
                 one’s lifetime.
@@ -329,11 +347,11 @@ const Login = () => {
                   className="w-full h-full"
                 />
               </div>
-              <div className="ml-2">
-                <p className="text-sm font-medium leading-none text-gray-800">
-                  Mark Twain
+              <div className={enabled ? " text-white ml-2" : "text-gray-800 ml-2"}>
+                <p className="text-sm font-medium leading-none ">
+                  Anthony Bourdain
                 </p>
-                <p className="text-sm font-medium leading-none text-gray-600 mt-1 cursor-pointer hover:underline">
+                <p className="text-sm font-medium leading-none  mt-1 cursor-pointer hover:underline">
                   See profile
                 </p>
               </div>

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SiCoursera } from "react-icons/si";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import { AuthContext } from "../../firebase/UserContext";
 
 const FAQ = () => {
-  
+  const {enabled} = useContext(AuthContext)
   return (
-    <div>
+    <div className={enabled ? " bg-black " : ""}>
             <div className="2xl:mx-auto 2xl:container py-12 lg:px-20 md:px-6 px-4 ">
                 <div className="w-full flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center items-center text-center space-y-4">
-                        <h1 className="text-3xl lg:text-4xl font-semibold leading-9 md:leading-7 lg:leading-9 text-gray-800">Frequently Asked Questions</h1>
-                        <p className="text-base leading-6 text-center text-gray-600 w-full md:w-10/12">Here are few of the most frequently asked questions by our valueable students</p>
+                        <h1 className={`text-3xl lg:text-4xl font-semibold leading-9 md:leading-7 lg:leading-9 ${enabled ? " text-white " : "text-gray-800"}`}>Frequently Asked Questions</h1>
+                        <p className={`text-base leading-6 text-center w-full md:w-10/12 ${enabled ? " text-white " : "text-gray-600"}`}>Here are few of the most frequently asked questions by our valueable students</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 w-full lg:grid-cols-3 xl:grid-cols-6 justify-items-around gap-x-6 gap-y-6 xl:gap-y-0 xl:gap-x-8 mt-10">
                         <button className="w-full focus:outline-none border focus:border-gray-800 border-transparent bg-gray-50 flex justify-center items-center flex-col text-center py-10 px-12 space-y-6">
@@ -73,20 +74,20 @@ const FAQ = () => {
                     </div>
                     <div className="mt-16 flex justify-start flex-col items-start w-full text-left space-y-8">
                         <div className=" flex justify-start items-start flex-col text-left w-full xl:w-8/12">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"> <BsArrowRightCircleFill/> What are the key responsibilities of Web Developers?</h3>
-                            <p className="mt-6 text-base leading-6 text-gray-600">For Web developers are one of the major IT job profiles that professionals can explore. It must have the technical computer and graphic design skills that can help in creating the design of web pages.</p> <br />
-                            <p className="text-base leading-6 text-gray-600"> The responsibility of the web developers is to understand the requirement of the users or clients to develop sites from scratch. It is essential for the developers to be tech-savvy and know the basics of functional and actual websites.</p>
+                            <h3 className={`text-xl font-medium leading-7 md:leading-5 text-left ${enabled ? " text-white " : "text-gray-800"} flex`}> <BsArrowRightCircleFill/> What are the key responsibilities of Web Developers?</h3>
+                            <p className={`mt-6 text-base leading-6 ${enabled ? " text-white " : "text-gray-600"}`}>For Web developers are one of the major IT job profiles that professionals can explore. It must have the technical computer and graphic design skills that can help in creating the design of web pages.</p> <br />
+                            <p className={`text-base leading-6 ${enabled ? " text-white " : "text-gray-600"}`}> The responsibility of the web developers is to understand the requirement of the users or clients to develop sites from scratch. It is essential for the developers to be tech-savvy and know the basics of functional and actual websites.</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />
                         <div className="flex justify-start items-start flex-col text-left w-full xl:w-8/12 ">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"> <BsArrowRightCircleFill/>What does a web developer do?</h3>
-                            <p className="mt-6 text-base leading-6 text-gray-600">Typically, there are three types of web developer jobs based on skills: front-end, back-end, and full-stack development. Front-end web developers design the look of a website (visible to users) and focus on visual elements of the website. A backend developer is responsible for server-side (non-visible to users) application logic and front-end integration.</p> <br />
-                            <p className="text-base leading-6 text-gray-600"> Full Stack Developers work both on the Back End (server-side) and Front End (client-side) of an application</p>
+                            <h3 className={`text-xl font-medium leading-7 md:leading-5 text-left ${enabled ? " text-white " : "text-gray-800"} flex`}> <BsArrowRightCircleFill/>What does a web developer do?</h3>
+                            <p className={`mt-6 text-base leading-6 ${enabled ? " text-white " : "text-gray-600"}`}>Typically, there are three types of web developer jobs based on skills: front-end, back-end, and full-stack development. Front-end web developers design the look of a website (visible to users) and focus on visual elements of the website. A backend developer is responsible for server-side (non-visible to users) application logic and front-end integration.</p> <br />
+                            <p className={`text-base leading-6 ${enabled ? " text-white " : "text-gray-600"}`}> Full Stack Developers work both on the Back End (server-side) and Front End (client-side) of an application</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />
                         <div className="flex justify-start items-start flex-col text-left w-full xl:w-8/12">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"><BsArrowRightCircleFill/>How much time does it take to learn web development?</h3>
-                            <p className="mt-6 text-base leading-6 text-gray-600">For a beginner, learning web development from the ground up would take you about four to six months if you study 2-3 hours every day. Some people learn within a couple of months, while others take a year or so.</p>
+                            <h3 className={`text-xl font-medium leading-7 md:leading-5 text-left ${enabled ? " text-white " : "text-gray-800"} flex`}><BsArrowRightCircleFill/>How much time does it take to learn web development?</h3>
+                            <p className={`mt-6 text-base leading-6 ${enabled ? " text-white " : "text-gray-600"}`}>For a beginner, learning web development from the ground up would take you about four to six months if you study 2-3 hours every day. Some people learn within a couple of months, while others take a year or so.</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />
                     </div>

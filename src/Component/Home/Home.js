@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import banner from "../../assist/e-learning.json";
 import { Link } from "react-router-dom";
 import AnimatedText from "react-animated-text-content";
+import { AuthContext } from "../../firebase/UserContext";
 
 const Home = () => {
+  const {enabled} = useContext(AuthContext);
   return (
-    <section className=" relative  bg-cover bg-center bg-no-repeat">
-      <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/25"></div>
+    <section className={enabled ? " bg-black text-white border border-white  bg-cover bg-center bg-no-repeat" : "   bg-cover bg-center bg-no-repeat"}>
+      <div className=" inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/25"></div>
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex font-serif z-10 flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <h1 className="text-5xl  font-bold leading-none ">
@@ -38,7 +40,7 @@ const Home = () => {
           </h1>
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
             <Link
-              rel="noopener noreferrer"
+              
               to="../about"
               className="px-8 py-3 text-lg font-semibold border rounded hover:text-white  border-green-600 hover:bg-green-600 "
             >

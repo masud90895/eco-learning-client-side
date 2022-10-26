@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { BiSelectMultiple } from "react-icons/bi";
 import Pdf from "react-to-pdf";
 import { AiFillStar } from "react-icons/ai";
 import AnimatedText from "react-animated-text-content";
+import { AuthContext } from "../../firebase/UserContext";
 const ref = React.createRef();
 const CourseDetaile = () => {
   const courseData = useLoaderData();
@@ -19,10 +20,11 @@ const CourseDetaile = () => {
     Rating,
     level,
   } = courseData;
+  const {enabled} = useContext(AuthContext)
   return (
-    <div className="2xl:container   2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  bg-gray-100">
+    <div className={`  2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  ${enabled ? "bg-black text-white" : "bg-gray-100 2xl:container "}`}>
       <div className=" text-6xl flex mb-12 font-bold ">
-        <h2 className="font-semibold w-full mx-auto lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
+        <h2 className={`font-semibold w-full mx-auto lg:text-4xl text-3xl lg:leading-9 leading-7 ${enabled ? " text-white " : "text-gray-800"} mt-4 `}>
           <AnimatedText
             type="chars" // animate words or chars
             animation={{
@@ -46,7 +48,7 @@ const CourseDetaile = () => {
         <Pdf targetRef={ref} filename="code-example.pdf">
           {({ toPdf }) => (
             <button   title="Download Feature " className="flex justify-around rounded-md items-center bg-green-200 hover:bg-green-400 hover:text-white px-2 h-[50px]" onClick={toPdf}>
-              <p className="text-[20px]">Download</p>
+              <p className="text-[20px] text-black">Download</p>
               <img
                 className="w-[20%]"
               
@@ -69,12 +71,12 @@ const CourseDetaile = () => {
               <AiFillStar className="text-2xl text-orange-500" />
               <h1 className="text-xl font-bold">{Rating}</h1>
             </div>
-            <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 cursor-pointer">
+            <p className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 ${enabled ? " text-white " : "text-gray-800"} hover:underline hover:text-gray-800 duration-100 cursor-pointer`}>
               Duration: {Duration}
             </p>
           </div>
 
-          <p className=" font-normal text-base leading-6 text-gray-600 mt-7">
+          <p className={` font-normal text-base leading-6 ${enabled ? " text-white " : "text-gray-800"} mt-7`}>
             {ditailes}
           </p>
           <p className=" font-semibold lg:text-2xl text-start text-xl lg:leading-6 leading-5 mt-6 ">
@@ -85,7 +87,7 @@ const CourseDetaile = () => {
               This Course Features :
             </h1>
             {Feature.map((fr) => (
-              <ul key={fr} className="space-y-2 mb-2 text-xl  text-black">
+              <ul key={fr} className={`space-y-2 mb-2 text-xl  ${enabled ? " text-white " : "text-black"}`}>
                 <li className="flex mt-4 items-start space-x-2">
                   <BiSelectMultiple />
                   <span>{fr}</span>

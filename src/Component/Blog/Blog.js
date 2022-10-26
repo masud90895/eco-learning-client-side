@@ -1,24 +1,40 @@
-import React, { useState } from "react";
-
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../firebase/UserContext";
 const Blog = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
+  const { enabled } = useContext(AuthContext);
   return (
-    <div className=" lg:container lg:mx-auto lg:py-16 md:py-12 md:px-6 py-12 px-4">
+    <div
+      className={` lg:mx-auto lg:py-16 md:py-12 md:px-6 py-12 px-4 ${
+        enabled ? " bg-black text-white " : "lg:container"
+      }`}
+    >
       <h1 className="text-center lg:text-4xl text-3xl lg:leading-9 leading-7 text-green-600 font-semibold">
-        Blog's 
+        Blog's
       </h1>
 
-      <div className=" lg:mt-12 bg-gray-100 md:mt-10 mt-8 lg:py-7 lg:px-6 md:p-6 py-6 px-4 lg:w-8/12 w-full mx-auto ">
+      <div
+        className={` lg:mt-12  md:mt-10 mt-8 lg:py-7 lg:px-6 md:p-6 py-6 px-4 lg:w-8/12 w-full mx-auto ${
+          enabled ? " bg-black border border-white" : "bg-gray-100"
+        }`}
+      >
         <div className=" flex justify-between md:flex-row flex-col ">
           <div className=" md:mb-0 mb-8 md:text-left text-center">
-            <h2 className=" font-medium text-xl leading-5 text-gray-800 lg:mb-2 mb-4">
+            <h2
+              className={`font-medium text-xl leading-5 ${
+                enabled ? " text-white " : "text-gray-800"
+              } lg:mb-2 mb-4`}
+            >
               Questions
             </h2>
-            <p className=" font-normal text-sm leading-5 text-gray-600 md:w-8/12 md:ml-0 w-11/12 mx-auto">
+            <p
+              className={` font-normal text-sm leading-5 ${
+                enabled ? " text-white " : "text-gray-600"
+              } md:w-8/12 md:ml-0 w-11/12 mx-auto`}
+            >
               If you don’t find your answer, Please contact us or Leave a
               Message, we’ll be more than happy to assist you.
             </p>
@@ -67,10 +83,10 @@ const Blog = () => {
             id="mainHeading"
             className="flex justify-between items-center w-full"
           >
-            <div className=" ">
-              <p className="flex justify-center items-center font-medium text-base leading-6 md:leading-4 text-gray-800">
+            <div className={enabled ? " text-white " : "text-gray-800"}>
+              <p className="flex justify-center items-center font-medium text-base leading-6 md:leading-4 ">
                 {" "}
-                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">
+                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold ">
                   Q1.
                 </span>{" "}
                 what is cors?
@@ -78,7 +94,9 @@ const Blog = () => {
             </div>
             <button
               aria-label="toggler"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+              className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 ${
+                enabled ? " bg-white " : ""
+              }`}
               onClick={() => setOpen(!open)}
             >
               <svg
@@ -103,8 +121,17 @@ const Blog = () => {
             id="menu"
             className={"mt-6 w-full " + (open ? "block" : "hidden")}
           >
-            <p className="text-base text-left leading-6 text-gray-600 font-normal">
-           <strong>Cors:</strong> Sometimes the files we upload on the firebase storage can't be accessed, it can be simply viewed but we will not have access to modify or access when it is necessary. CORS (Cross-Origin Resource Sharing) is one of the best solution to overcome this issue which helps to access web resources from different domains.
+            <p
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              <strong>Cors:</strong> Sometimes the files we upload on the
+              firebase storage can't be accessed, it can be simply viewed but we
+              will not have access to modify or access when it is necessary.
+              CORS (Cross-Origin Resource Sharing) is one of the best solution
+              to overcome this issue which helps to access web resources from
+              different domains.
             </p>
           </div>
         </div>
@@ -118,18 +145,21 @@ const Blog = () => {
             id="mainHeading"
             className="flex justify-between items-center w-full"
           >
-            <div className="">
-              <p className="flex text-left justify-center items-center font-medium text-base leading-6 lg:leading-4 text-gray-800">
+            <div className={enabled ? " text-white " : "text-gray-800"}>
+              <p className="flex text-left justify-center items-center font-medium text-base leading-6 lg:leading-4 ">
                 {" "}
-                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">
+                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold">
                   Q2.
                 </span>{" "}
-                Why are you using firebase? What other options do you have to implement authentication?
+                Why are you using firebase? What other options do you have to
+                implement authentication?
               </p>
             </div>
             <button
               aria-label="toggler"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+              className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 ${
+                enabled ? " bg-white " : ""
+              }`}
               onClick={() => setOpen2(!open2)}
             >
               <svg
@@ -154,9 +184,19 @@ const Blog = () => {
             id="menu"
             className={"mt-6 w-full " + (open2 ? "block" : "hidden")}
           >
-            <p className="text-base text-left leading-6 text-gray-600 font-normal">
-            Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more. <br />
-            Usually, authentication by a server entails the use of a user name and password. Other ways to authenticate can be through cards, retina scans, voice recognition, and fingerprints.
+            <p
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              Firebase Authentication provides backend services, easy-to-use
+              SDKs, and ready-made UI libraries to authenticate users to your
+              app. It supports authentication using passwords, phone numbers,
+              popular federated identity providers like Google, Facebook and
+              Twitter, and more. <br />
+              Usually, authentication by a server entails the use of a user name
+              and password. Other ways to authenticate can be through cards,
+              retina scans, voice recognition, and fingerprints.
             </p>
           </div>
         </div>
@@ -170,10 +210,14 @@ const Blog = () => {
             id="mainHeading"
             className="flex justify-between items-center w-full"
           >
-            <div className="">
-              <p className="flex justify-center items-center font-medium text-base leading-6 lg:leading-4 text-gray-800">
+            <div
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              <p className="flex justify-center items-center font-medium text-base leading-6 lg:leading-4 ">
                 {" "}
-                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">
+                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold ">
                   Q3.
                 </span>
                 How does the private route work?
@@ -181,7 +225,9 @@ const Blog = () => {
             </div>
             <button
               aria-label="toggler"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+              className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 ${
+                enabled ? " bg-white " : ""
+              }`}
               onClick={() => setOpen3(!open3)}
             >
               <svg
@@ -206,8 +252,19 @@ const Blog = () => {
             id="menu"
             className={"mt-6 w-full " + (open3 ? "block" : "hidden")}
           >
-            <p className="text-base leading-6 text-left text-gray-600 font-normal">
-            The react private route component renders child components ( children ) if the user is logged in. If not logged in the user is redirected to the /login page with the return url passed in the location state property.PrivateRoute component is the blueprint for all private routes in the application. If the user is logged in, go on and display the component in question; otherwise, redirect the user to sign-in page. Additionally, we can define the logic of isLogin utility function separately in utils folder.
+            <p
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              The react private route component renders child components (
+              children ) if the user is logged in. If not logged in the user is
+              redirected to the /login page with the return url passed in the
+              location state property.PrivateRoute component is the blueprint
+              for all private routes in the application. If the user is logged
+              in, go on and display the component in question; otherwise,
+              redirect the user to sign-in page. Additionally, we can define the
+              logic of isLogin utility function separately in utils folder.
             </p>
           </div>
         </div>
@@ -221,10 +278,14 @@ const Blog = () => {
             id="mainHeading"
             className="flex justify-between items-center w-full"
           >
-            <div className="">
-              <p className="flex justify-center items-center font-medium text-base leading-6 lg:leading-4 text-gray-800">
+            <div
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              <p className="flex justify-center items-center font-medium text-base leading-6 lg:leading-4 ">
                 {" "}
-                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">
+                <span className="  lg:mr-6 mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold ">
                   Q4.
                 </span>
                 What is Node? How does Node work?
@@ -232,7 +293,9 @@ const Blog = () => {
             </div>
             <button
               aria-label="toggler"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+              className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 ${
+                enabled ? " bg-white " : ""
+              }`}
               onClick={() => setOpen4(!open4)}
             >
               <svg
@@ -257,13 +320,23 @@ const Blog = () => {
             id="menu"
             className={"mt-6 w-full  " + (open4 ? "block" : "hidden")}
           >
-            <p className="text-base leading-6 text-left text-gray-600 font-normal">
-            Node. js is a JavaScript runtime environment that achieves low latency and high throughput by taking a “non-blocking” approach to serving requests. In other words, Node. js wastes no time or resources on waiting for I/O requests to return. <br /> It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node. js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive.
+            <p
+              className={`text-base text-left leading-6 ${
+                enabled ? " text-white " : "text-gray-600"
+              } font-normal`}
+            >
+              Node. js is a JavaScript runtime environment that achieves low
+              latency and high throughput by taking a “non-blocking” approach to
+              serving requests. In other words, Node. js wastes no time or
+              resources on waiting for I/O requests to return. <br /> It is a
+              used as backend service where javascript works on the server-side
+              of the application. This way javascript is used on both frontend
+              and backend. Node. js runs on chrome v8 engine which converts
+              javascript code into machine code, it is highly scalable,
+              lightweight, fast, and data-intensive.
             </p>
           </div>
         </div>
-
-
       </div>
     </div>
   );
