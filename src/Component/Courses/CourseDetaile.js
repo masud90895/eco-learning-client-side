@@ -21,7 +21,7 @@ const CourseDetaile = () => {
   } = courseData;
   return (
     <div className="2xl:container   2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  bg-gray-100">
-      <div className=" text-6xl flex mb-12 font-bold shadow">
+      <div className=" text-6xl flex mb-12 font-bold ">
         <h2 className="font-semibold w-full mx-auto lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
           <AnimatedText
             type="chars" // animate words or chars
@@ -45,9 +45,11 @@ const CourseDetaile = () => {
         </h2>
         <Pdf targetRef={ref} filename="code-example.pdf">
           {({ toPdf }) => (
-            <button onClick={toPdf}>
+            <button   title="Download Feature " className="flex justify-around rounded-md items-center bg-green-200 hover:bg-green-400 hover:text-white px-2 h-[50px]" onClick={toPdf}>
+              <p className="text-[20px]">Download</p>
               <img
-                title="Download Feature "
+                className="w-[20%]"
+              
                 src="https://i.ibb.co/47nnPZb/icons8-download-96.png"
                 alt=""
               />
@@ -77,11 +79,13 @@ const CourseDetaile = () => {
           <p className=" font-normal text-base leading-6 text-gray-600 mt-7">
             {ditailes}
           </p>
-          <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">
-            ${fee}/-
+          <p className=" font-semibold lg:text-2xl text-start text-xl lg:leading-6 leading-5 mt-6 ">
+           Course Price: <small className="text-red-400">${fee}</small>/-
           </p>
           <div ref={ref}>
-            <h1 className="mt-5 text-2xl font-bold">This Course Feather :</h1>
+            <h1 className="mt-5 underline text-2xl font-bold">
+              This Course Features :
+            </h1>
             {Feature.map((fr) => (
               <ul key={fr} className="space-y-2 mb-2 text-xl  text-black">
                 <li className="flex mt-4 items-start space-x-2">
@@ -93,7 +97,7 @@ const CourseDetaile = () => {
           </div>
 
           <Link to={`../chackout/${id}`}>
-            <button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 text-black bg-white w-full py-5 lg:mt-12 mt-6">
+            <button className="focus:outline-none focus:ring-2 hover:bg-green-600 focus:ring-offset-2 font-medium text-base leading-4 border-2 rounded-lg border-green-600 hover:text-white text-black bg-white w-full py-5 lg:mt-12 mt-6">
               Get premium access
             </button>
           </Link>

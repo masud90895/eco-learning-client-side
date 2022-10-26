@@ -34,7 +34,7 @@ const Course = ({ course }) => {
         Duration : {course?.Duration}
       </p>
       <NavLink to={`${course.id}`}>
-        <button className=" border-green-600 font-medium  text-base leading-4 border-2  py-3 w-[40%] rounded hover:bg-green-600  mb-2 mt-2 text-black">
+        <button className=" border-green-600 hover:text-white font-medium  text-base leading-4 border-2  py-3 w-[40%] rounded hover:bg-green-600  mb-2 mt-2 text-black">
           View Details
         </button>
       </NavLink>

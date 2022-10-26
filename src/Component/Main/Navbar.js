@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Popover } from "@headlessui/react";
 import { AuthContext } from "../../firebase/UserContext";
+import logo from "../../assist/ty.png";
 
 const Navbar = () => {
   const [enabled, setEnabled] = useState(false);
@@ -32,7 +33,7 @@ const Navbar = () => {
           <div className="flex   lg:grid ">
             <Link to="/">
               <div className="flex md:w-[214px] lg:w-full items-center">
-                <h1 className="text-2xl font-bold">
+                <h1 className="text-2xl font-bold text-white">
                   <span className="text-green-600">ECO</span> LEARNING{" "}
                 </h1>
                 <span>
@@ -63,28 +64,24 @@ const Navbar = () => {
                   onClick={handleLogOut}
                   className="bg-green-600 text-white p-1 rounded-lg hover:border-2 md:mx-5 lg:mx-0 hover:border-green-600 hover:bg-white hover:text-black"
                 >
-                  logOut
+                  LogOut
                 </button>
               ) : (
                 <Link to="login">
                   <button className="bg-green-600 text-white p-1 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
-                    login
+                    Login
                   </button>
                 </Link>
               )}
-              <button onClick={() => setShowMenu(!showMenu)}>
-                <img
-                  className="w-10"
-                  src="https://i.ibb.co/89QjS79/list.png"
-                  alt=""
-                />
+              <button className="" onClick={() => setShowMenu(!showMenu)}>
+                <img className="w-10" src={logo} alt="" />
               </button>
             </div>
           </div>
-          <div className="lg:flex hidden  flex-1 items-center  gap-8 justify-end">
+          <div className="lg:flex hidden text-white flex-1 items-center  gap-8 justify-end">
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2 text-green-600 border-green-600" : ""
+                isActive ? "border-b-2  border-green-600" : ""
               }
               to="home"
             >
@@ -92,7 +89,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2 text-green-600  border-green-600" : ""
+                isActive ? "border-b-2   border-green-600" : ""
               }
               to="courses"
             >
@@ -100,7 +97,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2 text-green-600  border-green-600" : ""
+                isActive ? "border-b-2  border-green-600" : ""
               }
               to="faq"
             >
@@ -108,7 +105,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "border-b-2 text-green-600  border-green-600" : ""
+                isActive ? "border-b-2   border-green-600" : ""
               }
               to="blog"
             >
@@ -166,12 +163,12 @@ const Navbar = () => {
                 onClick={handleLogOut}
                 className="bg-green-600 text-white p-2 rounded-lg  hover:border-green-600 hover:bg-white hover:text-black"
               >
-                logOut
+                LogOut
               </button>
             ) : (
               <Link to="login">
                 <button className="bg-green-600 text-white p-2 rounded-lg  hover:border-green-600 hover:bg-white hover:text-black">
-                  login
+                  Login
                 </button>
               </Link>
             )}
@@ -181,7 +178,7 @@ const Navbar = () => {
 
       {/* mobail device menu  */}
       {showMenu && (
-        <div className="flex  lg:hidden flex-col gap-2 text-center mr-7 text-xl">
+        <div className="flex text-white  lg:hidden flex-col gap-2 text-center mr-7 text-xl">
           <Link to="Home">Home</Link>
           <Link to="courses">Courses</Link>
           <Link to="faq">FAQ</Link>
@@ -190,7 +187,7 @@ const Navbar = () => {
             checked={enabled}
             onChange={setEnabled}
             className={`${enabled ? "bg-black" : "bg-white"}
-          relative inline-flex h-[28px] w-[64px] mx-auto  shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative inline-flex h-[28px] w-[64px] mx-auto  shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75 mb-5 `}
           >
             <span className="sr-only">Use setting</span>
             <span
