@@ -1,5 +1,6 @@
 import React from "react";
 import { SiCoursera } from "react-icons/si";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 
 const FAQ = () => {
   
@@ -72,19 +73,19 @@ const FAQ = () => {
                     </div>
                     <div className="mt-16 flex justify-start flex-col items-start w-full text-left space-y-8">
                         <div className=" flex justify-start items-start flex-col text-left w-full xl:w-8/12">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800">What are the key responsibilities of Web Developers?</h3>
+                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"> <BsArrowRightCircleFill/> What are the key responsibilities of Web Developers?</h3>
                             <p className="mt-6 text-base leading-6 text-gray-600">For Web developers are one of the major IT job profiles that professionals can explore. It must have the technical computer and graphic design skills that can help in creating the design of web pages.</p> <br />
                             <p className="text-base leading-6 text-gray-600"> The responsibility of the web developers is to understand the requirement of the users or clients to develop sites from scratch. It is essential for the developers to be tech-savvy and know the basics of functional and actual websites.</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />
                         <div className="flex justify-start items-start flex-col text-left w-full xl:w-8/12 ">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800">What does a web developer do?</h3>
+                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"> <BsArrowRightCircleFill/>What does a web developer do?</h3>
                             <p className="mt-6 text-base leading-6 text-gray-600">Typically, there are three types of web developer jobs based on skills: front-end, back-end, and full-stack development. Front-end web developers design the look of a website (visible to users) and focus on visual elements of the website. A backend developer is responsible for server-side (non-visible to users) application logic and front-end integration.</p> <br />
                             <p className="text-base leading-6 text-gray-600"> Full Stack Developers work both on the Back End (server-side) and Front End (client-side) of an application</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />
                         <div className="flex justify-start items-start flex-col text-left w-full xl:w-8/12">
-                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800">How much time does it take to learn web development?</h3>
+                            <h3 className="text-xl font-medium leading-7 md:leading-5 text-left text-gray-800 flex"><BsArrowRightCircleFill/>How much time does it take to learn web development?</h3>
                             <p className="mt-6 text-base leading-6 text-gray-600">For a beginner, learning web development from the ground up would take you about four to six months if you study 2-3 hours every day. Some people learn within a couple of months, while others take a year or so.</p>
                         </div>
                         <hr className="border border-gray-100 w-full" />

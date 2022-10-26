@@ -56,15 +56,13 @@ const CourseDetaile = () => {
             </button>
           )}
         </Pdf>
-        {/* <button className="">
-          <img src="https://i.ibb.co/47nnPZb/icons8-download-96.png" alt="" />
-        </button> */}
+        
       </div>
       <div className=" flex flex-col-reverse items-center   gap-8">
         {/* <!-- Description Div --> */}
 
         <div className="  w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
-          {/* <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">{project}</h2> */}
+          
 
           <div className=" flex flex-row justify-between  mt-5">
             <div className=" flex flex-row space-x-3">
@@ -106,8 +104,8 @@ const CourseDetaile = () => {
         {/* <!-- Preview Images Div For larger Screen--> */}
 
         <div className=" w-full sm:w-96 md:w-8/12  lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
-          <div className=" w-full mx-auto lg:w-8/12 bg-gray-100 flex justify-center items-center">
-            <img src={image} alt="Wooden Chair Previw" />
+          <div className=" w-full mx-auto lg:w-8/12  bg-gray-100 flex justify-center items-center">
+            <img  src={image} alt="" />
           </div>
         </div>
       </div>

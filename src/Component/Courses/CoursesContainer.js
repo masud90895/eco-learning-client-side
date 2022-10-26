@@ -1,9 +1,10 @@
 import React from "react";
 import Course from "./Course";
 
+
 const CoursesContainer = ({ courses }) => {
   return (
-    <div className=" 2xl:container 2xl:mx-auto  relative bg-[url(https://i.ibb.co/FKjjPFW/20544.jpg)] bg-cover bg-center bg-no-repeat">
+    <div className=" 2xl:container 2xl:mx-auto  relative  bg-cover bg-center bg-no-repeat">
       <div
     className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/25"
   ></div>

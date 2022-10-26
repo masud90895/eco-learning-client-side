@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Course = ({ course }) => {
   return (
-    <div className=" relative shadow-xl rounded-lg border bg-white border-gray-900">
+    <div className=" relative shadow-xl rounded-lg border bg-white ">
       <div className=" absolute top-0 left-0 py-2 px-4 bg-white bg-opacity-50 ">
         <p className="text-xs leading-3 text-gray-800">New</p>
       </div>

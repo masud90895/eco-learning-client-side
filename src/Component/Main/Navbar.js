@@ -27,22 +27,22 @@ const Navbar = () => {
       });
   };
   return (
-    <header aria-label="Page Header" className="bg-gray-600">
+    <header aria-label="Page Header" className="font-serif bg-gray-600">
       <div className="mx-auto  py-2 px-2  md:px-10 md:py-4">
         <div className="flex items-center sm:justify-between sm:gap-4">
           <div className="flex   lg:grid ">
             <Link to="/">
               <div className="flex md:w-[214px] lg:w-full items-center">
-                <h1 className="text-2xl font-bold text-white">
-                  <span className="text-green-600">ECO</span> LEARNING{" "}
-                </h1>
                 <span>
                   <img
                     className="w-[40px]"
-                    src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+                    src="https://hippothemes.com/demo/child-education-wordpress-theme/wp-content/uploads/sites/2/2017/09/cropped-favicon_new-1.png"
                     alt=""
                   />
                 </span>
+                <h1 className="text-2xl font-bold text-white">
+                  <span className="text-green-600">ECO</span> LEARNING{" "}
+                </h1>
               </div>
             </Link>
             {/* mobail view only  */}
