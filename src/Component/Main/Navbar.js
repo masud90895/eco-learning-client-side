@@ -154,15 +154,6 @@ const Navbar = () => {
                 className="group flex shrink-0 items-center rounded-lg transition"
               >
                 <span className="sr-only">Menu</span>
-                {user?.photoURL && (
-                  <Link to="profile">
-                    <img
-                      alt=""
-                      src={user?.photoURL}
-                      className="h-10 w-10 rounded-full object-cover"
-                    />
-                  </Link>
-                )}
                 {user?.photoURL ? (
                   <Link to="profile">
                     <img
