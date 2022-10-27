@@ -28,7 +28,7 @@ const Navbar = () => {
       aria-label="Page Header"
       className={
         enabled
-          ? "font-serif border border-white bg-black"
+          ? "font-serif border border-white bg-[#2e2e2e]"
           : "font-serif bg-gray-600"
       }
     >
@@ -73,20 +73,7 @@ const Navbar = () => {
                   </Link>
                 )}
               </button>
-              {user?.uid ? (
-                <button
-                  onClick={handleLogOut}
-                  className="bg-green-600 text-white p-1 rounded-lg hover:border-2 md:mx-5 lg:mx-0 hover:border-green-600 hover:bg-white hover:text-black"
-                >
-                  LogOut
-                </button>
-              ) : (
-                <Link to="login">
-                  <button className="bg-green-600 text-white p-1 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
-                    Login
-                  </button>
-                </Link>
-              )}
+
               <button className="" onClick={() => setShowMenu(!showMenu)}>
                 <img className="w-10" src={logo} alt="" />
               </button>
@@ -209,6 +196,20 @@ const Navbar = () => {
       {/* mobail device menu  */}
       {showMenu && (
         <div className="flex text-white  lg:hidden flex-col gap-2 text-center mr-7 text-xl">
+          {user?.uid ? (
+            <button
+              onClick={handleLogOut}
+              className="bg-green-600 text-white p-1 rounded-lg hover:border-2 md:mx-5 lg:mx-0 hover:border-green-600 hover:bg-white hover:text-black"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link to="login">
+              <button className="bg-green-600 text-white p-1 rounded-lg hover:border-2 hover:border-green-600 hover:bg-white hover:text-black">
+                Login
+              </button>
+            </Link>
+          )}
           <Link to="Home">Home</Link>
           <Link to="courses">Courses</Link>
           <Link to="faq">FAQ</Link>

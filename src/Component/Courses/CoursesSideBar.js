@@ -8,8 +8,8 @@ const CoursesSideBar = () => {
   const courses = useLoaderData();
  
   return (
-    <div className={enabled ? "lg:flex  bg-black" : "lg:flex  "}>
-      <div className={enabled ? "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-black text-white border border-white  " : "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-gray-900   text-white"}>
+    <div className={enabled ? "lg:flex  bg-[#2e2e2e]" : "lg:flex  bg-indigo-50"}>
+      <div className={enabled ? "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-[#2e2e2e] text-white border border-white  " : "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-gray-900   text-white"}>
         <div className="flex items-center p-2 space-x-4">
           <img
             src={user?.photoURL}

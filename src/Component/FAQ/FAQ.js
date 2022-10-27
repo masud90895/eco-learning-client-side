@@ -6,7 +6,7 @@ import { AuthContext } from "../../firebase/UserContext";
 const FAQ = () => {
   const {enabled} = useContext(AuthContext)
   return (
-    <div className={enabled ? " bg-black " : ""}>
+    <div className={enabled ? " bg-[#2e2e2e] " : "bg-indigo-50"}>
             <div className="2xl:mx-auto 2xl:container py-12 lg:px-20 md:px-6 px-4 ">
                 <div className="w-full flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center items-center text-center space-y-4">

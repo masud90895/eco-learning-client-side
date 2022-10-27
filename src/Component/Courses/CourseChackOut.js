@@ -6,13 +6,12 @@ import AnimatedText from "react-animated-text-content";
 import TextAnimation from "react-text-animations";
 const CourseChackOut = () => {
   const chackoutData = useLoaderData();
-  const { user,enabled } = useContext(AuthContext);
+  const { user, enabled } = useContext(AuthContext);
   const [dropdown1, setDropdown1] = useState(false);
   const [dropdown2, setDropdown2] = useState(false);
   const [dropdown3, setDropdown3] = useState(false);
   const [changeText1, setChangeText1] = useState("City");
   const navigate = useNavigate();
-  
 
   const HandleText1 = (e) => {
     setChangeText1(e);
@@ -37,8 +36,13 @@ const CourseChackOut = () => {
       }
     });
   };
+
   return (
-    <div className={`overflow-y-hidden ${enabled ? "bg-black text-white " : "bg-gray-100 text-black"}`}>
+    <div
+      className={`overflow-y-hidden ${
+        enabled ? "bg-[#2e2e2e] text-white " : "bg-gray-100 text-black"
+      }`}
+    >
       <div className="mt-5">
         <h1 className="text-xl">Your selected Course:</h1>
         <h1 title="Your Choices Courses" className="text-2xl font-bold">
@@ -70,13 +74,16 @@ const CourseChackOut = () => {
             className="flex w-full  flex-col justify-start items-start"
           >
             <div>
-              <div className={`text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 ${enabled ? " text-white " : "text-gray-800"}`}>
-                
+              <div
+                className={`text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 ${
+                  enabled ? " text-white " : "text-gray-800"
+                }`}
+              >
                 <TextAnimation.Slide
                   target="Dear"
                   text={["Dear", "sweeting", "beloved"]}
                 >
-                Welcome Dear
+                  Welcome Dear
                 </TextAnimation.Slide>
               </div>
             </div>
@@ -101,8 +108,33 @@ const CourseChackOut = () => {
                 {user?.displayName}
               </AnimatedText>
             </h1>
+            {user?.email && <h1 className="text-md ">
+              <AnimatedText
+                type="chars" // animate words or chars
+                animation={{
+                  x: "200px",
+                  y: "-20px",
+                  scale: 1.1,
+                  ease: "ease-in-out",
+                }}
+                animationType="bounce"
+                interval={0.06}
+                duration={0.8}
+                tag="p"
+                className="animated-paragraph"
+                includeWhiteSpaces
+                threshold={0.1}
+                rootMargin="20%"
+              >
+               {user?.email}
+              </AnimatedText>
+            </h1>}
             <div className="mt-12">
-              <p className={`text-xl font-semibold leading-5 ${enabled ? " text-white " : "text-gray-800"}`}>
+              <p
+                className={`text-xl font-semibold leading-5 ${
+                  enabled ? " text-white " : "text-gray-800"
+                }`}
+              >
                 Student Details
               </p>
             </div>
@@ -128,7 +160,9 @@ const CourseChackOut = () => {
                 placeholder="Address (line 02)"
               />
               <div className="flex justify-between flex-col sm:flex-row w-full items-start space-y-8 sm:space-y-0 sm:space-x-8">
-                <div className={`relative w-full ${enabled ? " bg-white " : ""}`}>
+                <div
+                  className={`relative w-full ${enabled ? " bg-white " : ""}`}
+                >
                   <p
                     id="button1"
                     className=" px-2 border-b border-gray-200 text-left leading-4 text-base text-gray-600 py-4 w-full"
@@ -187,7 +221,9 @@ const CourseChackOut = () => {
                     </div>
                   </div>
                 </div>
-                <div className={`relative w-full ${enabled ? " bg-white " : ""}`}>
+                <div
+                  className={`relative w-full ${enabled ? " bg-white " : ""}`}
+                >
                   <p
                     id="button2"
                     className=" px-2 border-b border-gray-200 text-left leading-4 text-base text-gray-600 py-4 w-full"
@@ -246,7 +282,9 @@ const CourseChackOut = () => {
                 </div>
               </div>
               <div className="flex justify-between flex-col sm:flex-row w-full items-start space-y-8 sm:space-y-0 sm:space-x-8">
-                <div className={`relative w-full ${enabled ? " bg-white " : ""}`}>
+                <div
+                  className={`relative w-full ${enabled ? " bg-white " : ""}`}
+                >
                   <p
                     id="button3"
                     className=" px-2 border-b border-gray-200 text-left leading-4 text-base text-gray-600 py-4 w-full"
@@ -319,14 +357,20 @@ const CourseChackOut = () => {
             </div>
             <button
               type="submit"
-              className={`focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4  py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800 ${enabled ? " text-white hover:bg-white hover:text-black" : "text-gray-800 hover:bg-black"}`}
+              className={`focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4  py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800 ${
+                enabled
+                  ? " text-white hover:bg-white hover:text-black"
+                  : "text-gray-800 hover:bg-black"
+              }`}
             >
               Proceed to payment
             </button>
             <div className="mt-4 flex justify-start items-center w-full">
               <Link
                 to="../courses"
-                className={`text-base leading-4 underline focus:outline-none focus:text-gray-500  ${enabled ? " text-white " : "text-gray-800"}`}
+                className={`text-base leading-4 underline focus:outline-none focus:text-gray-500  ${
+                  enabled ? " text-white " : "text-gray-800"
+                }`}
               >
                 Back to Courses
               </Link>

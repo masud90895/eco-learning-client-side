@@ -113,7 +113,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className={enabled ? " bg-black " : "bg-indigo-50"}>
+      <div className={enabled ? " bg-[#2e2e2e] " : "bg-indigo-50"}>
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
           <div className=" md:hidden sm:mb-8 mb-6">
             <img
@@ -431,7 +431,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-[#2e2e2e]"></div>
           </>
         ) : null}
       </div>

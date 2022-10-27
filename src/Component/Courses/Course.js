@@ -7,7 +7,7 @@ const Course = ({ course }) => {
   return (
     <div
       className={` relative shadow-xl rounded-lg border  ${
-        enabled ? "bg-black " : "bg-white"
+        enabled ? "bg-[#2e2e2e] " : "bg-white"
       }`}
     >
       <div className=" absolute top-0 left-0 py-2 px-4 bg-white bg-opacity-50 ">
@@ -28,7 +28,9 @@ const Course = ({ course }) => {
           </NavLink>
         </div>
       </div>
-      <p className="  text-left p-2 text-xl font-bold leading-5 text-black md:mt-2 mt-4">
+      <p className={`  text-left p-2 text-xl font-bold leading-5 ${
+          enabled ? "text-white " : "text-black"
+        } md:mt-2 mt-4`}>
         {course?.project}
       </p>
       <p

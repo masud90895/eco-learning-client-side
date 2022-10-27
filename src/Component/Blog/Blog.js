@@ -9,7 +9,7 @@ const Blog = () => {
   return (
     <div
       className={` lg:mx-auto lg:py-16 md:py-12 md:px-6 py-12 px-4 ${
-        enabled ? " bg-black text-white " : "lg:container"
+        enabled ? " bg-[#2e2e2e]   text-white " : "lg:container "
       }`}
     >
       <h1 className="text-center lg:text-4xl text-3xl lg:leading-9 leading-7 text-green-600 font-semibold">
@@ -18,7 +18,7 @@ const Blog = () => {
 
       <div
         className={` lg:mt-12  md:mt-10 mt-8 lg:py-7 lg:px-6 md:p-6 py-6 px-4 lg:w-8/12 w-full mx-auto ${
-          enabled ? " bg-black border border-white" : "bg-gray-100"
+          enabled ? " bg-[#2e2e2e] border border-white" : "bg-gray-100"
         }`}
       >
         <div className=" flex justify-between md:flex-row flex-col ">

@@ -22,7 +22,7 @@ const CourseDetaile = () => {
   } = courseData;
   const {enabled} = useContext(AuthContext)
   return (
-    <div className={`  2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  ${enabled ? "bg-black text-white" : "bg-gray-100 2xl:container "}`}>
+    <div className={`  2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4  ${enabled ? "bg-[#2e2e2e] text-white" : "bg-gray-100 2xl:container "}`}>
       <div className=" text-6xl flex mb-12 font-bold ">
         <h2 className={`font-semibold w-full mx-auto lg:text-4xl text-3xl lg:leading-9 leading-7 ${enabled ? " text-white " : "text-gray-800"} mt-4 `}>
           <AnimatedText

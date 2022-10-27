@@ -5,11 +5,11 @@ import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
 
 const Profile = () => {
-  const { user, updateName } = useContext(AuthContext);
+  const { user, updateName, setLoading,enabled } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
-//   console.log(name, photo);
+  //   console.log(name, photo);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -31,12 +31,15 @@ const Profile = () => {
         // An error occurred
         console.log(error.message);
         // ...
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   return (
-    <div className="h-full ">
+    <div className={`h-full ${enabled ? " bg-[#2e2e2e] " : "bg-indigo-50"}`}>
       <div className="border-b-2 block  md:ml-[20%] lg:ml-[40%]  mx-auto">
-        <div className="w-full md:w-3/5 lg:w-2/5 p-4 sm:p-6 lg:ml-4 lg:p-8 bg-white shadow-md">
+        <div className={`w-full md:w-3/5 lg:w-2/5 p-4 sm:p-6 lg:ml-4 lg:p-8 ${enabled ? " bg-[#2e2e2e] border border-white text-white" : "bg-white"} shadow-md`}>
           <div className="flex justify-between">
             <span className="text-xl font-semibold block">User Profile</span>
             {/* <a
@@ -50,7 +53,7 @@ const Profile = () => {
                 <button
                   type="button"
                   onClick={openModal}
-                  className=" bg-black bg-opacity-20 px-4 py-2 text-sm  text-white hover:bg-opacity-30  focus-visible:ring-2  focus-visible:ring-opacity-75 text-md font-bold  rounded-full  hover:bg-gray-800"
+                  className={` ${enabled ? " bg-white text-black" : "bg-[#2e2e2e]"}  px-4 py-2 text-sm  text-white hover:bg-opacity-30  focus-visible:ring-2  focus-visible:ring-opacity-75 text-md font-bold  rounded-full  hover:bg-gray-800`}
                 >
                   Edit
                 </button>
@@ -67,7 +70,7 @@ const Profile = () => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    <div className="fixed inset-0 bg-[#2e2e2e] bg-opacity-25" />
                   </Transition.Child>
 
                   <div className="fixed inset-0 overflow-y-auto">
@@ -133,7 +136,7 @@ const Profile = () => {
             </>
           </div>
 
-          <span className="text-gray-600">
+          <span className={enabled ? " text-white " : "text-gray-600"}>
             This information is secret so be careful
           </span>
           <div className="w-full p-8 mx-2 flex justify-center">
@@ -150,12 +153,12 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-3/5 lg:w-2/5 bg-white lg:ml-4 shadow-md">
+        <div className={`w-full md:w-3/5 lg:w-2/5 ${enabled ? " bg-[#2e2e2e] text-white border border-white" : "bg-white"} lg:ml-4 shadow-md`}>
           <div className="rounded  shadow p-6">
             <div className="pb-6">
               <label
                 htmlFor="id"
-                className="font-semibold text-gray-700 block pb-1"
+                className={`font-semibold ${enabled ? " text-white " : "text-gray-700"} block pb-1`}
               >
                 id
               </label>
@@ -171,7 +174,7 @@ const Profile = () => {
             <div className="pb-6">
               <label
                 htmlFor="name"
-                className="font-semibold text-gray-700 block pb-1"
+                className={`font-semibold ${enabled ? " text-white " : "text-gray-700"} block pb-1`}
               >
                 Name
               </label>
@@ -187,7 +190,7 @@ const Profile = () => {
             <div className="pb-4">
               <label
                 htmlFor="about"
-                className="font-semibold text-gray-700 block pb-1"
+                className={`font-semibold ${enabled ? " text-white " : "text-gray-700"} block pb-1`}
               >
                 Email
               </label>
@@ -198,7 +201,7 @@ const Profile = () => {
               >
                 {user?.email}
               </p>
-              <span className="text-gray-600 pt-4 block opacity-70">
+              <span className={` ${enabled ? " text-white " : "text-gray-700"} pt-4 block opacity-70`}>
                 Personal login information of your account
               </span>
             </div>

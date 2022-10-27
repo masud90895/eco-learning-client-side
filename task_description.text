@@ -1,5 +1,9 @@
-=>7
+=>7.{akta catagory te 6 ta}
+=>8.When you click an option (course card or an option on the left/right sidebar), It will take you to the course detail page. Content details depend on you. But, it must include a header, introductory description/course body, and one image. All details must be relevant to the topic. You may include a bullet list/ table/ chart if needed.
 !=>11.Your checkout page will be a dynamic route with route parameters having the id of the content that the user had clicked. On the checkout page, you will display the name based on the id.
+
+=>full download pdf 
+=> email image all dekhano 
 
 Optional (But Highly Recommended):
 If you have sometime, try to implement dark/light theme toggle.

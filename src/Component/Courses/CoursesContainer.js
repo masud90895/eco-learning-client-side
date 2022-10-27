@@ -8,7 +8,7 @@ const CoursesContainer = ({ courses }) => {
     <div
       className={
         enabled
-          ? "  2xl:container 2xl:mx-auto border border-white bg-black text-white bg-cover bg-center bg-no-repeat"
+          ? "  2xl:container 2xl:mx-auto border border-white bg-[#2e2e2e] text-white bg-cover bg-center bg-no-repeat"
           : "  2xl:container 2xl:mx-auto     bg-cover bg-center bg-no-repeat"
       }
     >
@@ -16,13 +16,13 @@ const CoursesContainer = ({ courses }) => {
       <div
         className={
           enabled
-            ? "   bg-black text-white border border-white  text-center lg:py-10 md:py-8 py-6"
-            : "   bg-gray-50  text-center lg:py-10 md:py-8 py-6"
+            ? "   bg-[#2e2e2e] text-white border border-white  text-center lg:py-10 md:py-8 py-6"
+            : "   bg-indigo-50  text-center lg:py-10 md:py-8 py-6"
         }
       >
         <p
           className={` w-10/12 mx-auto md:w-full  font-semibold lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-center  ${
-            enabled ? "text-white" : "text-gray-800"
+            enabled ? "text-white" : "text-gray-800 "
           }`}
         >
           Discover Our Popular Courses

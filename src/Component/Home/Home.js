@@ -8,7 +8,7 @@ import { AuthContext } from "../../firebase/UserContext";
 const Home = () => {
   const {enabled} = useContext(AuthContext);
   return (
-    <section className={enabled ? " bg-black text-white border border-white  bg-cover bg-center bg-no-repeat" : "   bg-cover bg-center bg-no-repeat"}>
+    <section className={enabled ? " bg-[#2e2e2e] text-white border border-white  bg-cover bg-center bg-no-repeat" : " bg-indigo-50  bg-cover bg-center bg-no-repeat"}>
       <div className=" inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/25"></div>
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex font-serif z-10 flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
