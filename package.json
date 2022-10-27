@@ -22,7 +22,7 @@
     "react-text-animations": "^1.1.10",
     "react-to-pdf": "^0.0.14",
     "sweetalert2": "^11.6.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4" 
   },
   "scripts": {
     "start": "react-scripts start",

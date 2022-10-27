@@ -5,14 +5,25 @@ import { AuthContext } from "../../firebase/UserContext";
 const Footer = () => {
   const { enabled } = useContext(AuthContext);
   return (
-    <footer className={enabled ? "px-4 divide-y shadow-lg   bg-[#2e2e2e]   text-gray-100" : "px-4 divide-y shadow-lg   bg-gray-600   text-gray-100"}>
+    <footer
+      className={
+        enabled
+          ? "px-4 divide-y shadow-lg   bg-[#2e2e2e]   text-gray-100"
+          : "px-4 divide-y shadow-lg   bg-gray-600   text-gray-100"
+      }
+    >
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
-          <Link to='/'
+          <Link
+            to="/"
             className="flex justify-center space-x-3 lg:justify-start"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-full   ">
-             <img className="flex-shrink-0 w-12 h-12 rounded-full   text-gray-900" src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png" alt="" />
+              <img
+                className="flex-shrink-0 w-12 h-12 rounded-full   text-gray-900"
+                src="https://i.ibb.co/V93Tz4d/nature-eco-education-removebg-preview.png"
+                alt=""
+              />
             </div>
             <span className="self-center text-2xl font-semibold">
               <span className="text-green-600">Eco</span> Learning
@@ -21,9 +32,7 @@ const Footer = () => {
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase   text-gray-50">
-              Product
-            </h3>
+            <h3 className="tracking-wide uppercase   text-gray-50">Product</h3>
             <ul className="space-y-1">
               <li>
                 <a rel="noopener noreferrer" href="#">
@@ -48,9 +57,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase   text-gray-50">
-              Company
-            </h3>
+            <h3 className="tracking-wide uppercase   text-gray-50">Company</h3>
             <ul className="space-y-1">
               <li>
                 <a rel="noopener noreferrer" href="#">
@@ -88,8 +95,8 @@ const Footer = () => {
             <div className="uppercase   text-gray-50">Social media</div>
             <div className="flex justify-start space-x-3">
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://www.facebook.com/masud90895"
+                target={"_blank"}
                 title="Facebook"
                 className="flex items-center p-1"
               >
@@ -103,8 +110,8 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://twitter.com/masud90895"
+                target={"_blank"}
                 title="Twitter"
                 className="flex items-center p-1"
               >
@@ -117,8 +124,8 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://www.instagram.com/md._mahafujur_rahaman_masud/"
+                target={"_blank"}
                 title="Instagram"
                 className="flex items-center p-1"
               >

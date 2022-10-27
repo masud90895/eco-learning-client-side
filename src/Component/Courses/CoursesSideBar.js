@@ -1,27 +1,45 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/UserContext";
 import CoursesContainer from "./CoursesContainer";
 
 const CoursesSideBar = () => {
-  const { user,enabled } = useContext(AuthContext);
+  const { user, enabled, userLogOut } = useContext(AuthContext);
   const courses = useLoaderData();
- 
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {
+        // Sign-out successful.
+        toast.success('Logout successful')
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error(error.massage);
+      });
+  };
   return (
-    <div className={enabled ? "lg:flex  bg-[#2e2e2e]" : "lg:flex  bg-indigo-50"}>
-      <div className={enabled ? "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-[#2e2e2e] text-white border border-white  " : "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-gray-900   text-white"}>
+    <div
+      className={enabled ? "lg:flex  bg-[#2e2e2e]" : "lg:flex  bg-indigo-50"}
+    >
+      <div
+        className={
+          enabled
+            ? "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-[#2e2e2e] text-white border border-white  "
+            : "lg:h-screen md:sticky top-0 w-full p-3 space-y-2  lg:w-60   bg-gray-900   text-white"
+        }
+      >
         <div className="flex items-center p-2 space-x-4">
           <img
             src={user?.photoURL}
             alt=""
             className="w-12 h-12 rounded-full   bg-gray-500"
           />
-          <div >
+          <div>
             <h2 className="text-lg font-semibold">{user?.displayName}</h2>
             <span className="flex items-center space-x-1">
               <Link
-                
-                to=""
+                to="../profile"
                 className="text-xs hover:underline   text-gray-400"
               >
                 View profile
@@ -44,7 +62,8 @@ const CoursesSideBar = () => {
           </ul>
           <ul className="pt-4 pb-2 space-y-1 text-sm">
             <li>
-              <Link to=''
+              <Link
+                to="../profile"
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -59,7 +78,8 @@ const CoursesSideBar = () => {
               </Link>
             </li>
             <li>
-              <Link to=''
+              <p
+                onClick={handleLogOut}
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -71,7 +91,7 @@ const CoursesSideBar = () => {
                   <rect width="32" height="64" x="256" y="232"></rect>
                 </svg>
                 <span>Logout</span>
-              </Link>
+              </p>
             </li>
           </ul>
         </div>
